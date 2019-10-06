@@ -9,7 +9,7 @@ namespace UnityTemplateProjects
             public float yaw;
             public float pitch;
             public float roll;
-            public float x;
+            public float x
             public float y;
             public float z;
 
