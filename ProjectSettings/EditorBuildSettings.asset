@@ -6,6 +6,24 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: d1c3109bdb54ad54c8a2b2838528e640
+    path: Assets/_RESILIENCE/_SCENES/MainScene/MainScene.unity
+    guid: 193160a87d0c1fe4ba807ff4c77ab5c0
+  - enabled: 1
+    path: Assets/_RESILIENCE/_SCENES/MainScene/Main_Environment.unity
+    guid: 3601ce1b0e542c44d887a84875d77f27
+  - enabled: 1
+    path: Assets/_RESILIENCE/_SCENES/MainScene/Main_Terrain.unity
+    guid: 61eb745040d35424d9bc3b55bbd7900c
+  - enabled: 1
+    path: Assets/_RESILIENCE/_SCENES/MainScene/Main_Lighting.unity
+    guid: f6db2465203eb3f4a9f32bebe911f452
+  - enabled: 1
+    path: Assets/_RESILIENCE/_SCENES/Player.unity
+    guid: 398a2c57265b45d41bfe8a3523c07a69
+  - enabled: 1
+    path: Assets/_RESILIENCE/_SCENES/Refugees.unity
+    guid: cc5a71dc666daaf4b9c688466793f3c7
+  - enabled: 1
+    path: Assets/_RESILIENCE/_SCENES/COREFUNCTIONALITY.unity
+    guid: 0907e370672cdb94eb49362373a50338
   m_configObjects: {}
