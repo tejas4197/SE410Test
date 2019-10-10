@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 6548945765311890854}
   - component: {fileID: 6217854825078878348}
   - component: {fileID: 6400853855443275493}
-  - component: {fileID: 2144296342479808775}
+  - component: {fileID: 8189379689040649630}
   - component: {fileID: 2614231087428942971}
   m_Layer: 0
   m_Name: Player
@@ -205,7 +205,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &2144296342479808775
+--- !u!114 &8189379689040649630
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -214,7 +214,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2614231087428942965}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ddb18b503c2f73419a2ef2caf45629f, type: 3}
+  m_Script: {fileID: 11500000, guid: 056afc46a08303d43bfa0ca1013cd85b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 2614231088061663441}
