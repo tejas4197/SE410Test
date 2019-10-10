@@ -1,0 +1,145 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &919296999775214747
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 919296999775214750}
+  - component: {fileID: 919296999775214745}
+  - component: {fileID: 919296999775214744}
+  m_Layer: 0
+  m_Name: HomelessHouse
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &919296999775214750
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919296999775214747}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -32.659725, y: 5.6172233, z: -39.03236}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 919297000026713359}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &919296999775214745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919296999775214747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f828c0bd66b3324880de8b217672157, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minStatVal: 0
+  maxStatVal: 0
+  defaultStatVal: 0
+  currStatVal: 0
+--- !u!114 &919296999775214744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919296999775214747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b230229c0c9910d47aae4e81ca256564, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactPopup: {fileID: 0}
+  constructionTime: 5
+  price: 0
+  cachedTransform: {fileID: 0}
+  prefOccupancy: 2147483647
+  maxOccupancy: 2147483647
+--- !u!1 &919297000026713353
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 919297000026713359}
+  - component: {fileID: 919297000026713358}
+  - component: {fileID: 919297000026713356}
+  m_Layer: 0
+  m_Name: Buildings
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &919297000026713359
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919297000026713353}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.3202744, y: -5.6172233, z: 45.37236}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 919296999775214750}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &919297000026713358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919297000026713353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 894c050d12e16dd4e84f9021c7c7fc17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &919297000026713356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919297000026713353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 337b848a6a0ef324babf267e3ec42dd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildings:
+  - type: 1
+    size: 1
+    prefab: {fileID: 732517075885335917, guid: ddfa6f0bb99a4bb46ac860a68bad4983, type: 3}
+  - type: 1
+    size: 2
+    prefab: {fileID: 7831161061705281402, guid: 6e993d214f23dff429249ac98a6cb1b0,
+      type: 3}
+  - type: 1
+    size: 3
+    prefab: {fileID: 4701117481553895757, guid: 1d37ea1edd28e4e499a0ab8877504e2f,
+      type: 3}
+  - type: 2
+    size: 1
+    prefab: {fileID: 4701117481553895757, guid: d36992d15e9399f41a64fea8480f1738,
+      type: 3}
+  - type: 2
+    size: 3
+    prefab: {fileID: 4701117481553895757, guid: dd065ffb940c6ed46a0267b2d8218cc8,
+      type: 3}
