@@ -67,8 +67,10 @@ public class Refugee : MonoBehaviour
                     health.SubtractCurrStat(1);
             }
 
-            Renderer mat = this.GetComponent<Renderer>();
-            mat.material.color = Color.Lerp(unhealthyColor, healthyColor, (health.GetCurrStatVal() * 1.0f) / 100.0f);
+            Renderer matRenderer = this.GetComponent<Renderer>();
+            Material mat = new Material(matRenderer.material);
+            mat.SetColor("_BaseColor", Color.Lerp(unhealthyColor, healthyColor, (health.GetCurrStatVal() * 1.0f) / 100.0f));
+            matRenderer.material = mat;
             yield return new WaitForSeconds(timer);
         }
     }

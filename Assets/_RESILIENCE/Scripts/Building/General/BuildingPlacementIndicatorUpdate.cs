@@ -103,7 +103,7 @@ public class BuildingPlacementIndicatorUpdate : MonoBehaviour
     private void SetMaterialInvalid()
     {
         isValid = false;
-        holoMtrl.SetColor("_Color", invalid);
+        holoMtrl.SetColor("_BaseColor", invalid);
     }
 
     /// <summary>
@@ -114,7 +114,7 @@ public class BuildingPlacementIndicatorUpdate : MonoBehaviour
         if (IncomeManager.GetInstance().CanSpendFunds(referencedBuilding.GetPrice()))
         {
             isValid = true;
-            holoMtrl.SetColor("_Color", valid);
+            holoMtrl.SetColor("_BaseColor", valid);
         }
         else
         {
