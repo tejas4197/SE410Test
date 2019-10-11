@@ -798,15 +798,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 4701117481553895757}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89f2e742a6aab5d468dd1e6deca09506, type: 3}
+  m_Script: {fileID: 11500000, guid: 1d2798d523170de41acb1cfb0f858050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactPopup: {fileID: 8435983398119660283}
+  interactPopup: {fileID: 1130259675441941396}
   constructionTime: 5
-  price: 500
-  cachedTransform: {fileID: 0}
-  prefOccupancy: 40
-  maxOccupancy: 60
+  price: 0
+  cachedTransform: {fileID: 7497801051846182599}
+  prefOccupancy: 0
+  maxOccupancy: 0
 --- !u!114 &-9002470429355908873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -848,13 +848,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 4701117481553895757}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c8cdd967c11f284892f3f9580b72c81, type: 3}
+  m_Script: {fileID: 11500000, guid: 277f886ddcdfa4b46bd7cb39832a4616, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   numColliding: 0
   holoMtrl: {fileID: 2100000, guid: 7dd64ff2008d71c48afcaf79bcffff27, type: 2}
-  invalid: {r: 0.745283, g: 0.17928976, b: 0.17928976, a: 1}
-  valid: {r: 0.18836774, g: 0.6390723, b: 0.7830189, a: 1}
+  invalid: {r: 1, g: 0, b: 0.12481499, a: 1}
+  valid: {r: 0, g: 0.707391, b: 1, a: 1}
 --- !u!1 &5575109756322617473
 GameObject:
   m_ObjectHideFlags: 0
@@ -865,6 +865,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3676373253159345900}
   - component: {fileID: 295895301542321028}
+  - component: {fileID: 7662635870224642079}
   m_Layer: 8
   m_Name: MaxOccupants
   m_TagString: Untagged
@@ -918,6 +919,22 @@ MonoBehaviour:
   m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
+--- !u!114 &7662635870224642079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5575109756322617473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 277f886ddcdfa4b46bd7cb39832a4616, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numColliding: 0
+  holoMtrl: {fileID: 0}
+  invalid: {r: 0, g: 0, b: 0, a: 0}
+  valid: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &6050402893874634137
 GameObject:
   m_ObjectHideFlags: 0
@@ -1148,7 +1165,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8435983398119660283}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4491135aa2928e443bbbe3f422ce8d8d, type: 3}
+  m_Script: {fileID: 11500000, guid: bfdc2816dde43c34da1e358169b11300, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   occupancyText: {fileID: 1100135710399366133}

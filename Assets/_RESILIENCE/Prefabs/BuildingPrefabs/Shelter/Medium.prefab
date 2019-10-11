@@ -833,7 +833,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6377875783795709132}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4491135aa2928e443bbbe3f422ce8d8d, type: 3}
+  m_Script: {fileID: 11500000, guid: bfdc2816dde43c34da1e358169b11300, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   occupancyText: {fileID: 2509650228792380866}
@@ -940,7 +940,7 @@ GameObject:
   - component: {fileID: 7038225687826572475}
   - component: {fileID: -4526974800444572118}
   - component: {fileID: 605924866920129993}
-  - component: {fileID: 5911741034416380326}
+  - component: {fileID: 7542442256718153703}
   m_Layer: 8
   m_Name: Medium
   m_TagString: Untagged
@@ -986,15 +986,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 7831161061705281402}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89f2e742a6aab5d468dd1e6deca09506, type: 3}
+  m_Script: {fileID: 11500000, guid: 1d2798d523170de41acb1cfb0f858050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactPopup: {fileID: 6377875783795709132}
+  interactPopup: {fileID: 2467720945748149667}
   constructionTime: 5
-  price: 300
-  cachedTransform: {fileID: 0}
-  prefOccupancy: 15
-  maxOccupancy: 25
+  price: 0
+  cachedTransform: {fileID: 5016425437449013488}
+  prefOccupancy: 0
+  maxOccupancy: 0
 --- !u!114 &-4526974800444572118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1027,7 +1027,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5911741034416380326
+--- !u!114 &7542442256718153703
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1036,13 +1036,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 7831161061705281402}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c8cdd967c11f284892f3f9580b72c81, type: 3}
+  m_Script: {fileID: 11500000, guid: 277f886ddcdfa4b46bd7cb39832a4616, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   numColliding: 0
   holoMtrl: {fileID: 2100000, guid: 7dd64ff2008d71c48afcaf79bcffff27, type: 2}
-  invalid: {r: 0.745283, g: 0.17928976, b: 0.17928976, a: 1}
-  valid: {r: 0.18836774, g: 0.6390723, b: 0.7830189, a: 1}
+  invalid: {r: 1, g: 0, b: 0.12481499, a: 1}
+  valid: {r: 0, g: 0.707391, b: 1, a: 1}
 --- !u!1 &9108318520438084526
 GameObject:
   m_ObjectHideFlags: 0
