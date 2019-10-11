@@ -2247,7 +2247,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentMonth: 1
   isTimePassing: 1
-  secondsPerMonth: 120
+  secondsPerMonth: 20
   timePassageMultiplier: 1
   timePassedThisMonth: 0
   deltaTime: 0
