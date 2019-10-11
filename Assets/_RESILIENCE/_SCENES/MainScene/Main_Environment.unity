@@ -119,7 +119,7 @@ NavMeshSettings:
     accuratePlacement: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 52a19498eb8ebac4a8b0bc498cb5b50d, type: 2}
 --- !u!1 &1127696208
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,7 +198,7 @@ PrefabInstance:
     - target: {fileID: 2496260038312948418, guid: 83477029d33393f439765717c97a7ff7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.335
+      value: -16.3
       objectReference: {fileID: 0}
     - target: {fileID: 2496260038312948418, guid: 83477029d33393f439765717c97a7ff7,
         type: 3}
@@ -208,7 +208,7 @@ PrefabInstance:
     - target: {fileID: 2496260038312948418, guid: 83477029d33393f439765717c97a7ff7,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -9.46
       objectReference: {fileID: 0}
     - target: {fileID: 2496260038312948418, guid: 83477029d33393f439765717c97a7ff7,
         type: 3}
@@ -267,7 +267,7 @@ PrefabInstance:
     - target: {fileID: 8745752251730301833, guid: 73a434992a498d1458b0ac50be3e0d12,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -18.2
       objectReference: {fileID: 0}
     - target: {fileID: 8745752251730301833, guid: 73a434992a498d1458b0ac50be3e0d12,
         type: 3}
@@ -277,7 +277,7 @@ PrefabInstance:
     - target: {fileID: 8745752251730301833, guid: 73a434992a498d1458b0ac50be3e0d12,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -10.4
       objectReference: {fileID: 0}
     - target: {fileID: 8745752251730301833, guid: 73a434992a498d1458b0ac50be3e0d12,
         type: 3}

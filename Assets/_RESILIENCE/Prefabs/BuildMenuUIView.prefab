@@ -119,7 +119,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3094219333660678844}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 962535008081884423}
+        m_MethodName: SendBuildingPlaceEvent
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 4701117481553895757, guid: dd065ffb940c6ed46a0267b2d8218cc8,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &962535008081884423
@@ -134,8 +146,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 894c050d12e16dd4e84f9021c7c7fc17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placementIndicatorPrefab: {fileID: 4701117481553895757, guid: 879e44f42b378e3479f1e28bbec06364,
-    type: 3}
 --- !u!1 &3094219333715222436
 GameObject:
   m_ObjectHideFlags: 0
@@ -624,7 +634,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3094219333948298977}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2461538183241318296}
+        m_MethodName: SendBuildingPlaceEvent
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 7831161061705281402, guid: 6e993d214f23dff429249ac98a6cb1b0,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2461538183241318296
@@ -639,8 +661,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 894c050d12e16dd4e84f9021c7c7fc17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placementIndicatorPrefab: {fileID: 7831161061705281402, guid: d74707d1ff3a06548bc628cb2aa6d551,
-    type: 3}
 --- !u!1 &3094219334520592115
 GameObject:
   m_ObjectHideFlags: 0
@@ -836,7 +856,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3094219334645937039}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3977475065407423132}
+        m_MethodName: SendBuildingPlaceEvent
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 4701117481553895757, guid: 1d37ea1edd28e4e499a0ab8877504e2f,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &3977475065407423132
@@ -851,8 +883,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 894c050d12e16dd4e84f9021c7c7fc17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placementIndicatorPrefab: {fileID: 4701117481553895757, guid: 1d6f475f0a9e9a048abda4c7bccf2c32,
-    type: 3}
 --- !u!1 &3094219334656258667
 GameObject:
   m_ObjectHideFlags: 0
@@ -1520,7 +1550,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3094219335024449078}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 693973887242209736}
+        m_MethodName: SendBuildingPlaceEvent
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 4701117481553895757, guid: d36992d15e9399f41a64fea8480f1738,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &693973887242209736
@@ -1535,8 +1577,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 894c050d12e16dd4e84f9021c7c7fc17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placementIndicatorPrefab: {fileID: 4701117481553895757, guid: 915879149d54fe546bff6040305c29df,
-    type: 3}
 --- !u!1 &3094219335259233774
 GameObject:
   m_ObjectHideFlags: 0
@@ -1735,7 +1775,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3094219335398315321}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9066260967213955576}
+        m_MethodName: SendBuildingPlaceEvent
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 732517075885335917, guid: ddfa6f0bb99a4bb46ac860a68bad4983,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &9066260967213955576
@@ -1750,8 +1802,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 894c050d12e16dd4e84f9021c7c7fc17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placementIndicatorPrefab: {fileID: 732517075885335917, guid: 1a3fd5bd487e1c948850535732801764,
-    type: 3}
 --- !u!1 &3094219335515925754
 GameObject:
   m_ObjectHideFlags: 0
