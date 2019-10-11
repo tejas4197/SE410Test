@@ -501,13 +501,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 6493285749714230905}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39c6456b93621574c87d765f8be2d877, type: 3}
+  m_Script: {fileID: 11500000, guid: 63a431b313398c74996b45a40e72726a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deselected: {fileID: 2100000, guid: 764efab73bd5b8d4b8ed0b55319fb683, type: 2}
-  selected: {fileID: 2100000, guid: c3808bbc185839c43a912bed6f0682cb, type: 2}
-  indicatorObj: {fileID: 2099038787974395104}
   interactPopup: {fileID: 7940923363394282959}
+  constructionTime: 5
+  price: 0
+  cachedTransform: {fileID: 0}
   timeToProcess: 2
   beforeProcessingPos: {x: 0, y: 0, z: 0}
   lineStartPos: {x: 0, y: 0, z: 0}
