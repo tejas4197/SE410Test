@@ -554,12 +554,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78862f774d301ba47aef5b6a1e2c33c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactPopup: {fileID: 0}
+  interactPopup: {fileID: 8435983398119660283}
   constructionTime: 5
-  price: 0
+  price: 500
   cachedTransform: {fileID: 0}
-  prefRadius: 0
-  maxRadius: 0
+  prefRadius: 20
+  maxRadius: 30
 --- !u!1 &7904213375868645740
 GameObject:
   m_ObjectHideFlags: 0

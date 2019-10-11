@@ -801,12 +801,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d2798d523170de41acb1cfb0f858050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactPopup: {fileID: 1130259675441941396}
+  interactPopup: {fileID: 8435983398119660283}
   constructionTime: 5
-  price: 0
+  price: 500
   cachedTransform: {fileID: 7497801051846182599}
-  prefOccupancy: 0
-  maxOccupancy: 0
+  prefOccupancy: 40
+  maxOccupancy: 60
 --- !u!114 &-9002470429355908873
 MonoBehaviour:
   m_ObjectHideFlags: 0

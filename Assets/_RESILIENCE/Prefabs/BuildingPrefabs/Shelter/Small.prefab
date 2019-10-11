@@ -125,12 +125,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d2798d523170de41acb1cfb0f858050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactPopup: {fileID: 4951892752553070516}
+  interactPopup: {fileID: 4469109198170906331}
   constructionTime: 5
-  price: 0
+  price: 100
   cachedTransform: {fileID: 2529438885188731623}
-  prefOccupancy: 0
-  maxOccupancy: 0
+  prefOccupancy: 4
+  maxOccupancy: 8
 --- !u!114 &-6226651099395530930
 MonoBehaviour:
   m_ObjectHideFlags: 0
