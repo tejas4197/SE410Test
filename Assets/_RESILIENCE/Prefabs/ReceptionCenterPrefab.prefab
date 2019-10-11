@@ -455,7 +455,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8299285124716116467}
   - component: {fileID: 3875362180778312141}
-  - component: {fileID: 6493285749714230906}
+  - component: {fileID: 411761143}
+  - component: {fileID: 411761144}
   m_Layer: 8
   m_Name: ReceptionCenterPrefab
   m_TagString: Untagged
@@ -492,7 +493,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6493285749714230906
+--- !u!114 &411761143
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -504,15 +505,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63a431b313398c74996b45a40e72726a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactPopup: {fileID: 7940923363394282959}
+  interactPopup: {fileID: 1481135218132710560}
   constructionTime: 5
   price: 0
   cachedTransform: {fileID: 0}
   timeToProcess: 2
   beforeProcessingPos: {x: 0, y: 0, z: 0}
-  lineStartPos: {x: 0, y: 0, z: 0}
+  lineStartPos: {x: 0, y: 0, z: 15}
   finishedProcessingPos: {x: 0, y: 0, z: 0}
   lineOffset: 1.5
+--- !u!114 &411761144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6493285749714230905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f828c0bd66b3324880de8b217672157, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minStatVal: 0
+  maxStatVal: 0
+  defaultStatVal: 0
+  currStatVal: 0
 --- !u!1 &7940923363394282959
 GameObject:
   m_ObjectHideFlags: 0
