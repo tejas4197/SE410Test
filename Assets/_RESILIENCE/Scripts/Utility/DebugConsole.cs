@@ -158,7 +158,7 @@ public class DebugConsole : MonoBehaviour
     /// <summary>
     /// Toggles display of Debug GUI
     /// </summary>
-    [MenuItem("Tools/DebugConsole/Toggle Console Visibility")]
+    //[MenuItem("Tools/DebugConsole/Toggle Console Visibility")]
     [Button("Toggle"), HorizontalGroup("Vis")]
     public static void ToggleDisplay()
     {
@@ -298,7 +298,7 @@ public class DebugConsole : MonoBehaviour
     /// <summary>
     /// Exports the logs to local disk for upload.  Currently only appends to the file of the date, not replaces it
     /// </summary>
-    [MenuItem("Tools/DebugConsole/Export Logs")]
+    //[MenuItem("Tools/DebugConsole/Export Logs")]
     [Button("Export Logs")]
     private static void ExportLogs()
     {
