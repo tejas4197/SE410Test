@@ -181,17 +181,44 @@ public class TimeManager : Singleton<TimeManager>
 			StartCoroutine("TimePasser");
 		}
 	}
-	#endregion MONOBEHAVIOUR
 
-	#region PUBLIC_METHODS
+    private void OnEnable()
+    {
+        DebugConsole.GetInstance().SubmitCommand += DebugTimeMultiManipulate;
+    }
 
-	#endregion PUBLIC_METHODS
+    private void OnDisable()
+    {
+        DebugConsole.GetInstance().SubmitCommand -= DebugTimeMultiManipulate;
+    }
 
-	#region PRIVATE_METHODS
-	/// <summary>
-	/// Coroutine handling time passage loop
-	/// </summary>
-	private IEnumerator TimePasser()
+    #endregion MONOBEHAVIOUR
+
+    #region PUBLIC_METHODS
+
+    #endregion PUBLIC_METHODS
+
+    #region PRIVATE_METHODS
+
+    /// <summary>
+    /// Debug command to change how fast time moves
+    /// </summary>
+    public void DebugTimeMultiManipulate(string command)
+    {
+        string[] parsedCommand = command.Split(' ');
+        float multipler = 0.0f;
+
+        if (parsedCommand.Length == 2 && parsedCommand[0].ToLower() == "time" && float.TryParse(parsedCommand[1], out multipler))
+        {
+            timePassageMultiplier = multipler;
+            Debug.Log("Time Rate is now " + timePassageMultiplier);
+        }
+    }
+
+    /// <summary>
+    /// Coroutine handling time passage loop
+    /// </summary>
+    private IEnumerator TimePasser()
 	{
 		timePassedThisMonth = 0;
 
