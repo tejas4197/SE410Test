@@ -1,0 +1,15 @@
+Script Folder Structure is as follows:
+
+-Building: any script that has anything to do with buildings that is not a UI element
+---General: scripts for superclass buildings and the building system as a whole
+---Housing: scripts for buildings of the housing subtype and their management
+---Water: scripts for buildings of the water subtype and their management
+-OtherManagers: management scripts for the game or its subsystems that do not fall into any of the other catagories
+---RandomEvents: the entirety of the random event subsystem
+-PlayerAndCamera: scripts for the players interaction/moveset, or the movement of the camera
+-Refugees: scripts handling the actions and behaviors of refugees
+-Stats: scripts to abstract stats of refugees, buildings, etc
+---BaseClasses: the underlying base classes of the stat classes
+-UI: scripts pertaining to the functionality of UI elements
+-Utility: scripts that handle utility functions such as load handling, event handling, and the debug console. these scripts will rarely need changes throughout development
+---EventHandlers: scripts for handling events
