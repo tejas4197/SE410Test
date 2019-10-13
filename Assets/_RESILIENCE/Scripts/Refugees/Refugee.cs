@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 [RequireComponent(typeof(Health))]
 [RequireComponent(typeof(Hydration))]
+[RequireComponent(typeof(OverallWellbeing))]
 public class Refugee : MonoBehaviour
 {
     #region Attributes
@@ -16,6 +17,7 @@ public class Refugee : MonoBehaviour
 
     private Health health;
     private Hydration hydration;
+    private OverallWellbeing wellbeing;
 
     #endregion
 
@@ -36,17 +38,27 @@ public class Refugee : MonoBehaviour
     {
         return hydration;
     }
+
+    /// <summary>
+    /// Accessor for OverallWellbeing
+    /// </summary>
+    public OverallWellbeing GetOverallWellbeing()
+    {
+        return wellbeing;
+    }
     #endregion
 
     private void Start()
     {
         health = GetComponent<Health>();
         hydration = GetComponent<Hydration>();
+        wellbeing = GetComponent<OverallWellbeing>();
 
         health.Died += OnDiedEventHandler;
 
         StartCoroutine(UpdateHealth(RefugeeManager.GetInstance().GetUpdateHealthTimer()));
         StartCoroutine(UpdateHydration(RefugeeManager.GetInstance().GetUpdateHealthTimer()));
+        StartCoroutine(UpdateWellBeing(RefugeeManager.GetInstance().GetUpdateHealthTimer()));
         cachedTransform = transform;
     }
 
@@ -66,11 +78,6 @@ public class Refugee : MonoBehaviour
                 if (healthGoal < health.GetCurrStatVal())
                     health.SubtractCurrStat(1);
             }
-
-            Renderer matRenderer = this.GetComponent<Renderer>();
-            Material mat = new Material(matRenderer.material);
-            mat.SetColor("_BaseColor", Color.Lerp(unhealthyColor, healthyColor, (health.GetCurrStatVal() * 1.0f) / 100.0f));
-            matRenderer.material = mat;
             yield return new WaitForSeconds(timer);
         }
     }
@@ -80,6 +87,20 @@ public class Refugee : MonoBehaviour
         while(true)
         {
             hydration.SubtractCurrStat(2);
+            yield return new WaitForSeconds(waitTime);
+        }
+    }
+
+    private IEnumerator UpdateWellBeing(float waitTime)
+    {
+        while(true)
+        {
+            wellbeing.SetCurrStat(health.GetCurrStatVal(), hydration.GetCurrStatVal());
+
+            Renderer matRenderer = this.GetComponent<Renderer>();
+            Material mat = new Material(matRenderer.material);
+            mat.SetColor("_BaseColor", Color.Lerp(unhealthyColor, healthyColor, (wellbeing.GetCurrStatVal() * 1.0f) / 100.0f));
+            matRenderer.material = mat;
             yield return new WaitForSeconds(waitTime);
         }
     }
