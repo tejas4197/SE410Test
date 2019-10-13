@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6558815057668580134}
   - component: {fileID: 5676433279570354363}
   m_Layer: 0
-  m_Name: SatelliteDish_fbx
+  m_Name: SatelliteDish
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58,9 +58,9 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 14683c4250c6acc4883aba64178e7325, type: 2}
-  - {fileID: 2100000, guid: b18bf9678aae27d4cb704172d970c116, type: 2}
-  - {fileID: 2100000, guid: 9e32ad7e3bacb1b40a316a831e74c87a, type: 2}
-  - {fileID: 2100000, guid: d049c4f68d6825e48a8f6f13772f5d10, type: 2}
+  - {fileID: 2100000, guid: 60045056f71b0d74f830c62b9e615c5c, type: 2}
+  - {fileID: 2100000, guid: d7cf21843a89cfe4eae26e3277f79f3e, type: 2}
+  - {fileID: 2100000, guid: 503b4fc2696404a42bc93cf9ed74178f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
