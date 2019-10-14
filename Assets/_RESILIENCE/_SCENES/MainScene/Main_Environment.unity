@@ -9033,7 +9033,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!154 &2009177249
 TerrainCollider:
   m_ObjectHideFlags: 0
@@ -9052,7 +9052,7 @@ Terrain:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2009177248}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_TerrainData: {fileID: 15600000, guid: 294c5f243abd36b4b93051a0607e89cd, type: 2}
   m_TreeDistance: 5000
