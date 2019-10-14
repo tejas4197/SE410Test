@@ -8,12 +8,6 @@ using Sirenix.OdinInspector;
 public class IncomeManager : Singleton<IncomeManager>
 {
     #region variables
-
-    private int refugeeVolume;
-    private float refugeeHealth;
-    private int refugeesResettled;
-    private RefugeeManager refugeeManager;
-
     [ReadOnly, MinValue(0)]
     [SerializeField, Tooltip("current funds player has in game")]
     private int funds;
@@ -34,6 +28,16 @@ public class IncomeManager : Singleton<IncomeManager>
     [MinValue(0)]
     [SerializeField, Tooltip("multiplier for monthly income, based off cheapest building cost")]
     public int multiplier = 50;
+
+    [ShowInInspector, ReadOnly]
+    [Tooltip("Number of Refugees in Camp")]
+    private int refugeeVolume;
+
+    [ShowInInspector, ReadOnly]
+    [Tooltip("Avg Health of Refugees in Camp")]
+    private float refugeeHealth;
+    private int refugeesResettled;
+    private RefugeeManager refugeeManager;
 
     #endregion variables
 
@@ -71,10 +75,12 @@ public class IncomeManager : Singleton<IncomeManager>
         UpdateRefugeeValues();
 
         // for readability and in case we ever want to display these
-        int successIncome = (int)(weight1 * Math.Log(refugeeHealth * refugeeVolume + refugeesResettled));
-        int needIncome = (int)(weight2 * Math.Log(refugeeVolume) + 1);
+        int successIncome = Mathf.RoundToInt((weight1 * Mathf.Log(refugeeHealth * refugeeVolume + refugeesResettled)) * multiplier);
+        int needIncome = Mathf.RoundToInt((weight2 * Mathf.Log(refugeeVolume) + 1) * multiplier);
+        int monthlyIncome = successIncome + needIncome;
 
-        funds += multiplier * (successIncome + needIncome);
+        funds += monthlyIncome;
+        Debug.Log("Monthly Income: " + successIncome + "(s) + " + needIncome + "(n) = " + monthlyIncome);
         UIManager.GetInstance().SetFundsText(funds);
         OnMoneyChanged?.Invoke(funds);
     }
@@ -135,7 +141,7 @@ public class IncomeManager : Singleton<IncomeManager>
         float avg = 0f;
         foreach (Refugee r in refugeeManager.GetRefugees())
         {
-            avg += r.GetHealth().GetCurrStatVal();
+            avg += r.GetOverallWellbeing().GetCurrStatVal();
         }
         refugeeHealth = avg / refugeeManager.GetRefugees().Count;
 
