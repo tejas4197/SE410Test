@@ -13,6 +13,9 @@ public class House : Building
 
 
     protected List<Refugee> occupants = new List<Refugee>();
+
+    private List<Health> waterHealth = new List<Health>();
+
     #endregion VARIABLES
 
     #region GETTERS_SETTERS
@@ -30,6 +33,23 @@ public class House : Building
     public int GetOccupantCount()
     {
         return occupants.Count;
+    }
+
+    public int GetWaterHealth()
+    {
+        if (waterHealth.Count == 0)
+        {
+            return 0;
+        }
+        int highestCurrentHealth = 0;
+        foreach (Health h in waterHealth)
+        {
+            if (h.GetCurrStatVal() > highestCurrentHealth)
+            {
+                highestCurrentHealth = h.GetCurrStatVal();
+            }
+        }
+        return highestCurrentHealth;
     }
 
     #endregion GETTERS_SETTERS
@@ -54,7 +74,7 @@ public class House : Building
     /// </summary>
     /// <returns></returns>
     protected override IEnumerator BuildingConstructionBegin()
-    { 
+    {
         yield return new WaitForSeconds(constructionTime);
 
         HousingManager.GetInstance().NewHouseBuilt(this);
@@ -69,7 +89,7 @@ public class House : Building
     /// <param name="_r">Refugee to add to this house.</param>
     public virtual void AddOccupant(Refugee _r)
     {
-        if(maxOccupancy == GetOccupantCount())
+        if (maxOccupancy == GetOccupantCount())
         {
             Debug.LogError(gameObject.name + " is already a full house.");
             return;
@@ -81,7 +101,7 @@ public class House : Building
         {
             HousingManager.GetInstance().AddBelowPrefOccupants(GetHashVal(), this);
         }
-        else if(GetOccupantCount() < maxOccupancy)
+        else if (GetOccupantCount() < maxOccupancy)
         {
             HousingManager.GetInstance().RemoveBelowPrefOccupants(GetHashVal());
             HousingManager.GetInstance().AddBelowMaxOccupants(GetHashVal(), this);
@@ -124,12 +144,17 @@ public class House : Building
     /// Removes specified occupant
     /// </summary>
     /// <param name="_r">Occupant to remove.</param>
-    public virtual void RemoveOccupant (Refugee _r)
+    public virtual void RemoveOccupant(Refugee _r)
     {
         if (occupants.Contains(_r))
         {
             occupants.Remove(_r);
         }
+    }
+
+    public void AddWaterSource(Health _waterHealth)
+    {
+        waterHealth.Add(_waterHealth);
     }
 
     #endregion PUBLIC_METHODS
