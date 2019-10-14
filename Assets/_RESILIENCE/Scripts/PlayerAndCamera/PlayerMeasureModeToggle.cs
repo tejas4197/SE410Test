@@ -4,6 +4,9 @@ using Sirenix.OdinInspector;
 
 using Rewired;
 
+/// <summary>
+/// Class for toggling between Sky View and Ground View with player input
+/// </summary>
 public class PlayerMeasureModeToggle : MonoBehaviour
 {
 	#region Variables
