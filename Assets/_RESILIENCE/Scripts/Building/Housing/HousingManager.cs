@@ -29,6 +29,25 @@ public class HousingManager : Singleton<HousingManager>
         return houses;
     }
 
+    /// <summary>
+    /// Gets a house from the houses list, at a given index.
+    /// </summary>
+    /// <param name="_index">Index of house wanted.</param>
+    /// <returns>House at the given index.</returns>
+    public House GetHouseAtIndex(int _index)
+    {
+        return houses[_index];
+    }
+
+    /// <summary>
+    /// Returns the number of objects in the housing list.
+    /// </summary>
+    /// <returns>Int, Number of houses in housing list.</returns>
+    public int GetHouseCount()
+    {
+        return houses.Count;
+    }
+
     public Dictionary<int, House> GetBelowPrefOccupantsHouses()
     {
         return belowPrefOccupants;
@@ -52,6 +71,15 @@ public class HousingManager : Singleton<HousingManager>
     public void EnqueueHomeless(Refugee _r)
     {
         homeless.Enqueue(_r);
+    }
+
+    /// <summary>
+    /// Returns the reference to the Homeless House
+    /// </summary>
+    /// <returns>Reference to the Homeless House</returns>
+    public HomelessHouse GetHomelessHouse()
+    {
+        return homelessHouse;
     }
 
     #endregion

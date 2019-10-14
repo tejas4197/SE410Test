@@ -32,10 +32,15 @@ public struct BuildingPrefabs
 /// </summary>
 public class BuildingManager : Singleton<BuildingManager>
 {
-     [SerializeField] private BuildingPrefabs[] buildings;
+    [SerializeField] private BuildingPrefabs[] buildings;
 
     #region Getters_Setters
-
+    /// <summary>
+    /// Gets the building prefab associated with the building type and size requested.
+    /// </summary>
+    /// <param name="_t">Building type.</param>
+    /// <param name="_s">Building size.</param>
+    /// <returns>Prefab for the specified building.</returns>
     public GameObject GetBuildingPrefab(BuildingType _t, BuildingSize _s)
     {
         for(int i = 0; i < buildings.Length; i++)

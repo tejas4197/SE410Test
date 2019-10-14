@@ -8,7 +8,9 @@ using UnityEngine;
 public class House : Building
 {
     #region VARIABLES
+    [Tooltip("The prefered number of occupants for this house.")]
     [SerializeField] protected int prefOccupancy;
+    [Tooltip("The maximum number of occupants this house can support.")]
     [SerializeField] protected int maxOccupancy;
 
 
@@ -30,6 +32,16 @@ public class House : Building
     public int GetOccupantCount()
     {
         return occupants.Count;
+    }
+
+    /// <summary>
+    /// Returns occupant at the specified index.
+    /// </summary>
+    /// <param name="_index">Index of refugee wanted.</param>
+    /// <returns>Refugee at the specified index.</returns>
+    public Refugee GetOccupant(int _index)
+    {
+        return occupants[_index];
     }
 
     #endregion GETTERS_SETTERS
