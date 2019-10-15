@@ -4,6 +4,9 @@ using Sirenix.OdinInspector;
 
 using Rewired;
 
+/// <summary>
+/// Player controller for interacting with objects in Sky View
+/// </summary>
 public class PlayerInteract : MonoBehaviour
 {
 	#region Variables

@@ -4,7 +4,10 @@ using Sirenix.OdinInspector;
 
 using Rewired;
 
-public class PlayerWalk : MonoBehaviour
+/// <summary>
+/// 2D top-down player movement character controller
+/// </summary>
+public class PlayerWalk2D : MonoBehaviour
 {
 	#region Variables
 	[Header("Input")]
