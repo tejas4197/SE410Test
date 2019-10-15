@@ -5,10 +5,12 @@ using UnityEngine;
 /// <summary>
 /// Water Pump Building. has a radius of effect and a radius that it effects to a lesser degree.
 /// </summary>
+[RequireComponent(typeof(Health))]
 public class Water : Building
 {
     [SerializeField] private int prefRadius;
     [SerializeField] private int maxRadius;
+
 
     /// <summary>
     /// Currently does nothing, but is required to be overrode.
@@ -24,6 +26,18 @@ public class Water : Building
     protected override IEnumerator BuildingConstructionBegin()
     {
         yield return new WaitForSeconds(constructionTime);
+
+        HousingManager housingManager = HousingManager.GetInstance();
+        float distance;
+
+        for (int i = 0; i < housingManager.GetHousesCount(); ++i)
+        {
+            distance = Vector3.Distance(housingManager.GetHouseAtIndex(i).cachedTransform.position, cachedTransform.position);
+            if (distance < maxRadius)
+            {
+                housingManager.GetHouseAtIndex(i).AddWaterSource(health);
+            }
+        }
     }
 
     /// <summary>

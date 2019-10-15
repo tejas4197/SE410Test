@@ -29,6 +29,16 @@ public class HousingManager : Singleton<HousingManager>
         return houses;
     }
 
+    public int GetHousesCount()
+    {
+        return houses.Count;
+    }
+
+    public House GetHouseAtIndex(int i)
+    {
+        return houses[i];
+    }
+
     public Dictionary<int, House> GetBelowPrefOccupantsHouses()
     {
         return belowPrefOccupants;
@@ -111,16 +121,16 @@ public class HousingManager : Singleton<HousingManager>
 
     public House GetBestHouse()
     {
-        foreach(House curr in belowPrefOccupants.Values)
+        foreach (House curr in belowPrefOccupants.Values)
         {
             return curr;
         }
 
-        foreach(House curr in belowMaxOccupants.Values)
+        foreach (House curr in belowMaxOccupants.Values)
         {
             return curr;
         }
-   
+
         return homelessHouse;
     }
 
@@ -162,7 +172,7 @@ public class HousingManager : Singleton<HousingManager>
 
     public void RemoveBelowMaxOccupants(int _hashCode)
     {
-        if(IsBelowMaxOccupants(_hashCode))
+        if (IsBelowMaxOccupants(_hashCode))
         {
             belowMaxOccupants.Remove(_hashCode);
         }

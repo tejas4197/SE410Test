@@ -14,6 +14,7 @@ public class RestoreHydration : MonoBehaviour
     [SerializeField] private bool shouldRestoreHydration;
     private Transform cachedTransform;
     private RefugeeManager refugeeManager;
+    private HousingManager housingManager;
 
     #endregion
 
@@ -24,7 +25,8 @@ public class RestoreHydration : MonoBehaviour
     {
         cachedTransform = transform;
         refugeeManager = RefugeeManager.GetInstance();
-        StartCoroutine(RestoreHydrationUpdate(RefugeeManager.GetInstance().GetUpdateHealthTimer()));
+        housingManager = HousingManager.GetInstance();
+        //StartCoroutine(RestoreHydrationUpdate(RefugeeManager.GetInstance().GetUpdateHealthTimer()));
     }
     /// <summary>
     /// Restores Hydration to refugees every "timeToWait" seconds.
@@ -34,7 +36,7 @@ public class RestoreHydration : MonoBehaviour
     IEnumerator RestoreHydrationUpdate(float timeToWait)
     {
         while (true)
-        { 
+        {
             if (shouldRestoreHydration)
             {
                 FireRestoreHydration();
@@ -50,12 +52,13 @@ public class RestoreHydration : MonoBehaviour
     {
         float distance;
 
-        for(int i = 0; i < refugeeManager.GetRefugeeCount(); ++i)
+        for (int i = 0; i < housingManager.GetHousesCount(); ++i)
         {
             distance = Vector3.Distance(refugeeManager.GetRefugeeAtIndex(i).cachedTransform.position, cachedTransform.position);
-            if(distance < hydrationRange)
+            if (distance < hydrationRange)
             {
-                refugeeManager.GetRefugeeAtIndex(i).GetHydration().AddCurrStat(hydrationToRestore);
+                //refugeeManager.GetRefugeeAtIndex(i).SetHasHydration(true);
+                //refugeeManager.GetRefugeeAtIndex(i).GetHydration().AddCurrStat(hydrationToRestore);
             }
         }
     }

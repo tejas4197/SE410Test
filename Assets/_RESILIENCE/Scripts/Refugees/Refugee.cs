@@ -14,7 +14,6 @@ public class Refugee : MonoBehaviour
     [HideInInspector] public Transform cachedTransform;
 
     private House house;
-
     private Health health;
     private Hydration hydration;
     private OverallWellbeing wellbeing;
@@ -84,16 +83,27 @@ public class Refugee : MonoBehaviour
 
     private IEnumerator UpdateHydration(float waitTime)
     {
-        while(true)
+        while (true)
         {
-            hydration.SubtractCurrStat(2);
+            if (house == null)
+            {
+                hydration.SubtractCurrStat(1);
+            }
+            else
+            {
+                int healthGoal = house.GetWaterHealth();
+                if (healthGoal > hydration.GetCurrStatVal())
+                    hydration.AddCurrStat(1);
+                if (healthGoal < hydration.GetCurrStatVal())
+                    hydration.SubtractCurrStat(1);
+            }
             yield return new WaitForSeconds(waitTime);
         }
     }
 
     private IEnumerator UpdateWellBeing(float waitTime)
     {
-        while(true)
+        while (true)
         {
             wellbeing.SetCurrStat(health.GetCurrStatVal(), hydration.GetCurrStatVal());
 
@@ -112,12 +122,12 @@ public class Refugee : MonoBehaviour
 
     public void SetHouse(Building _h)
     {
-        if(_h == null)
+        if (_h == null)
         {
             SetNewDestination(GameManager.GetInstance().receptionCenter.cachedTransform.position);
             return;
         }
-        if(_h.GetType() == typeof(HomelessHouse))
+        if (_h.GetType() == typeof(HomelessHouse))
         {
             HousingManager.GetInstance().EnqueueHomeless(this);
         }

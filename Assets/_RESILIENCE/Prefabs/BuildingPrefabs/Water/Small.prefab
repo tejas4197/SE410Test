@@ -439,7 +439,6 @@ GameObject:
   - component: {fileID: 3380370242725412601}
   - component: {fileID: 6118302631478028642}
   - component: {fileID: 5402954886124782721}
-  - component: {fileID: 4834123326975598728}
   - component: {fileID: 4935357100579680301}
   - component: {fileID: 5508647488293274076}
   m_Layer: 8
@@ -494,8 +493,8 @@ MonoBehaviour:
   constructionTime: 5
   price: 300
   cachedTransform: {fileID: 0}
-  prefRadius: 10
-  maxRadius: 20
+  prefRadius: 20
+  maxRadius: 30
 --- !u!114 &5402954886124782721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -512,21 +511,6 @@ MonoBehaviour:
   maxStatVal: 100
   defaultStatVal: 100
   currStatVal: 0
---- !u!114 &4834123326975598728
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4701117481553895757}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f64437285617f449bc3c004ac21fac2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hydrationRange: 10
-  hydrationToRestore: 1
-  shouldRestoreHydration: 0
 --- !u!54 &4935357100579680301
 Rigidbody:
   m_ObjectHideFlags: 0
