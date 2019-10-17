@@ -13,8 +13,7 @@ public class RefugeeManager : Singleton<RefugeeManager>
 
     private Vector3 refugeeGenPos = new Vector3(0, 0, -20);
     private float mPerPersonHousing = 4;
-    private float updateHealthTimer = 2;
-    private float pauseAtStart = 2;
+    private int pauseAtStart = 20;
     private int refugees;
     private List<Refugee> refugeeList;
     private float housingNeed;
@@ -22,15 +21,6 @@ public class RefugeeManager : Singleton<RefugeeManager>
     #endregion
 
     #region Getters
-    /// <summary>
-    /// Accessor for updateHealthTimer;
-    /// </summary>
-    /// <returns></returns>
-    public float GetUpdateHealthTimer()
-    {
-        return updateHealthTimer;
-    }
-
     ///<summary>
     ///Accessor for mPerPersonHousing
     ///</summary>
@@ -72,7 +62,7 @@ public class RefugeeManager : Singleton<RefugeeManager>
 
     private IEnumerator CreateNewRefugees()
     {
-        yield return new WaitForSeconds(pauseAtStart);
+        yield return new WaitForTicks(pauseAtStart);
         foreach (RefugeeArrivals r in arrivals)
         {
             for (int i = 0; i < r.numRefugees; i++)
@@ -80,7 +70,7 @@ public class RefugeeManager : Singleton<RefugeeManager>
                 CreateRefugee();
             }
             AddRefugees(r.numRefugees);
-            yield return new WaitForSeconds(r.timeToNextArrival);
+            yield return new WaitForTicks(r.timeToNextArrival);
         }
     }
 
@@ -116,5 +106,5 @@ public class RefugeeManager : Singleton<RefugeeManager>
 public class RefugeeArrivals
 {
     public int numRefugees;
-    public float timeToNextArrival;
+    public int timeToNextArrival;
 }

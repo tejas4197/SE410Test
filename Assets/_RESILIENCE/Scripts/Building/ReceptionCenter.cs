@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ReceptionCenter : Building
 {
-    public float timeToProcess = 2;
+    public int timeToProcess = 20;
     public Coroutine processing = null;
     private Queue<Refugee> queue = new Queue<Refugee>();
     public Vector3 beforeProcessingPos;
@@ -24,7 +24,8 @@ public class ReceptionCenter : Building
 
     protected override IEnumerator BuildingConstructionBegin()
     {
-        yield return new WaitForSeconds(constructionTime);
+        yield return new WaitForTicks(constructionTime);
+
         StartCoroutine(ProcessAllRefugees());
     }
 
@@ -40,13 +41,13 @@ public class ReceptionCenter : Building
         {
             if (queue.Count == 0)
             {
-                yield return new WaitForSeconds(1);
+                yield return new WaitForTicks(10);
             }
             else
             {
                 Refugee current = queue.Dequeue();
                 current.SetNewDestination(lineStartPos);
-                yield return new WaitForSeconds(timeToProcess);
+                yield return new WaitForTicks(timeToProcess);
                 current.SetNewDestination(finishedProcessingPos);
                 HousingManager.GetInstance().GetBestHouse().AddOccupant(current);
             }

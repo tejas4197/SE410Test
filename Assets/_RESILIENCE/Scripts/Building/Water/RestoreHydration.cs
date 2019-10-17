@@ -33,7 +33,7 @@ public class RestoreHydration : MonoBehaviour
     /// </summary>
     /// <param name="timeToWait">time to wait between restoring hydration 1 tick.</param>
     /// <returns>IEnumerator, runs in background.</returns>
-    IEnumerator RestoreHydrationUpdate(float timeToWait)
+    IEnumerator RestoreHydrationUpdate(int timeToWait)
     {
         while (true)
         {
@@ -41,7 +41,7 @@ public class RestoreHydration : MonoBehaviour
             {
                 FireRestoreHydration();
             }
-            yield return new WaitForSeconds(timeToWait);
+            yield return new WaitForTicks(timeToWait);
         }
     }
 
