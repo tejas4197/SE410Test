@@ -35,6 +35,9 @@ public class PlayerMeasureModeCameraToggle : MonoBehaviour
 
 	[SerializeField, Tooltip("The AnimationCurve to follow")]
 	AnimationCurve interpolationPath = AnimationCurve.EaseInOut(0, 0, 1, 1);
+
+	[SerializeField, Tooltip("Whether to use local or global rotation")]
+	bool useGlobalRotation = false;
 	#endregion Variables
 
 	#region MonoBehaviour
@@ -78,7 +81,12 @@ public class PlayerMeasureModeCameraToggle : MonoBehaviour
 	IEnumerator MoveCamera(Vector3 targetPos, Vector3 targetRot, bool measureMode, float duration)
 	{
 		Vector3 startPos = playerCam.transform.localPosition;
-		Vector3 startRot = ((measureMode) ? playerCam.transform.eulerAngles : playerCam.transform.localEulerAngles);
+		Vector3 startRot = ((measureMode && useGlobalRotation) ? playerCam.transform.eulerAngles : playerCam.transform.localEulerAngles);
+
+		if(measureMode && useGlobalRotation)
+		{
+			Debug.Log($"[{GetType().Name}] starting Rotation: {startRot}, Target Rotation: {targetRot}");
+		}
 
 		float deltaX = targetPos.x - startPos.x;
 		float deltaY = targetPos.y - startPos.y;
@@ -116,6 +124,20 @@ public class PlayerMeasureModeCameraToggle : MonoBehaviour
 
 		float timer = 0;
 
+		if(duration == 0)
+		{
+			playerCam.transform.SetLocalPosition(targetPos);
+
+			if (measureMode && useGlobalRotation)
+			{
+				playerCam.transform.SetRotation(targetRot);
+			}
+			else
+			{
+				playerCam.transform.SetLocalRotation(targetRot);
+			}
+		}
+
 		while (timer < duration)
 		{
 			timer += UnityEngine.Time.deltaTime;
@@ -127,14 +149,13 @@ public class PlayerMeasureModeCameraToggle : MonoBehaviour
 			newPos.z += deltaZ * interpolationPath.Evaluate(progress);
 
 			playerCam.transform.SetLocalPosition(newPos);
-			//playerCam.transform.LookAt(transform.position);
 
 			Vector3 newRot = startRot;
 			newRot.x += rotDeltaX * interpolationPath.Evaluate(progress);
 			newRot.y += rotDeltaY * interpolationPath.Evaluate(progress);
 			newRot.z += rotDeltaZ * interpolationPath.Evaluate(progress);
 
-			if (measureMode)
+			if (measureMode && useGlobalRotation)
 			{
 				playerCam.transform.SetRotation(newRot);
 			}
