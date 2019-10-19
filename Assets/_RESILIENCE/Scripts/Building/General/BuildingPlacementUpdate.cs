@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 
 using UnityEngine;
+using UnityEngine.UI;
+
+using Sirenix.OdinInspector;
 
 // TODO: Import BuildingIndicatorUpdate script into this script
 
@@ -11,12 +14,20 @@ using UnityEngine;
 /// </summary>
 public class BuildingPlacementUpdate : MonoBehaviour
 {
-    #region VARIABLES
+	#region VARIABLES
 
-    // TODO: camera reference should probably be made static and put in Player script singleton, when that script is refactored
-    /// <summary> Instance of Camera attached to player </summary>
-    [SerializeField, Tooltip("Instance of Camera attached to player")]
+	// TODO: camera reference should probably be made static and put in Player script singleton, when that script is refactored
+	/// <summary> Instance of Camera attached to player </summary>
+	[Required]
+	[SerializeField, Tooltip("Instance of Camera attached to player")]
     Camera playerCamera;
+
+	[Required]
+	[SerializeField, Tooltip("The Camera used for the tablet display")]
+	Camera tabletCamera;
+
+	[SerializeField, Tooltip("The Layers to check for a raycast click on the tablet")]
+	LayerMask tabletLayer;
 
     /// <summary> Instance of BuildingMenuManager singleton, which fires the event for when the user wants to place a building </summary>
     BuildingMenuManager buildMenuInstance;
@@ -106,12 +117,27 @@ public class BuildingPlacementUpdate : MonoBehaviour
     {
         while (true)
         {
-            Vector3 playerPosition = Input.mousePosition;
-            Ray ray = playerCamera.ScreenPointToRay(playerPosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, groundPlaneLayerMask))
+            Vector3 mousePos = Input.mousePosition;
+            Ray rayTablet = playerCamera.ScreenPointToRay(mousePos);
+
+			RaycastHit tabletHit;
+
+			// First check that the mouse is hovering over the tablet in Sky view
+            if (Physics.Raycast(rayTablet, out tabletHit, Mathf.Infinity, tabletLayer))
             {
-                position = RoundToWholeUnit(hit.point);
+				// Mouse is over the tablet, so convert first from tablet's texture space to screen space on the sky view camera
+				Vector2 localCoord = tabletHit.textureCoord;
+
+				// Create a ray at the camera point
+				Ray rayGround = tabletCamera.ScreenPointToRay(new Vector3(localCoord.x * tabletCamera.pixelWidth, localCoord.y * tabletCamera.pixelHeight));
+
+				RaycastHit groundHit;
+
+				// See where the screen point is in world space on the ground
+				if (Physics.Raycast(rayGround, out groundHit, Mathf.Infinity, groundPlaneLayerMask))
+				{
+					position = RoundToWholeUnit(groundHit.point);
+				}
             }
             buildingPlacementIndicatorInstance.transform.position = position;
             yield return null;
