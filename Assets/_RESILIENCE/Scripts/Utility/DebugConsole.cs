@@ -3,6 +3,8 @@
  * For checking logs in build because fuck Unity
  * */
 
+
+
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,6 +13,7 @@ using Sirenix.OdinInspector;
 
 using System.IO;
 using System.Collections;
+using System.Runtime.Serialization.Formatters.Binary;
 
 public class DebugConsole : MonoBehaviour
 {
@@ -305,8 +308,8 @@ public class DebugConsole : MonoBehaviour
         string date = System.DateTime.Now.ToString("yyyy-MM-dd");
         string datetime = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         string path = "Logs/" + date + ".txt";
+        Directory.CreateDirectory("Logs/");
 
-        //Write some text to the test.txt file
         StreamWriter writer = new StreamWriter(path, true);
         writer.WriteLine("Exported Logs");
         writer.WriteLine(datetime + "\n\n");
