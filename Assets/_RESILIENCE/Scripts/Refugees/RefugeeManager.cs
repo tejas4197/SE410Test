@@ -13,7 +13,7 @@ public class RefugeeManager : Singleton<RefugeeManager>
 
     private Vector3 refugeeGenPos = new Vector3(0, 0, -20);
     private float mPerPersonHousing = 4;
-    private int pauseAtStart = 20;
+    private float pauseAtStart = 2;
     private int refugees;
     private List<Refugee> refugeeList;
     private float housingNeed;

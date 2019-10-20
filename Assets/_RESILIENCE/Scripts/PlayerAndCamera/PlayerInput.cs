@@ -82,7 +82,7 @@ public class PlayerInput : UserInput
 	#region Private Methods
 	private IEnumerator SetManualAfterDelay()
 	{
-		yield return new WaitForTicks(10);
+		yield return new WaitForTicks(1);
 
 		isManual = false;
 		canMove = true;

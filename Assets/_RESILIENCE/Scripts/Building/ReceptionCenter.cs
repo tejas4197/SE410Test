@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ReceptionCenter : Building
 {
-    public int timeToProcess = 20;
+    public float timeToProcess = 2;
     public Coroutine processing = null;
     private Queue<Refugee> queue = new Queue<Refugee>();
     public Vector3 beforeProcessingPos;
@@ -41,7 +41,7 @@ public class ReceptionCenter : Building
         {
             if (queue.Count == 0)
             {
-                yield return new WaitForTicks(10);
+                yield return new WaitForTicks(1);
             }
             else
             {

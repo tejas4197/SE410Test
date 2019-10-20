@@ -19,7 +19,7 @@ public abstract class Building : MonoBehaviour
 {
     #region Attributes
     [SerializeField] protected GameObject interactPopup;
-    [SerializeField] protected int constructionTime = 50;
+    [SerializeField] protected float constructionTime = 5;
     [SerializeField] protected int price;
     protected Health health;
     private int hashVal;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WaitForTicks : CustomYieldInstruction
 {
-    int ticks;
+    float ticks;
     
     public override bool keepWaiting
     {
@@ -14,7 +14,7 @@ public class WaitForTicks : CustomYieldInstruction
         }
     }
 
-    public WaitForTicks(int _ticks)
+    public WaitForTicks(float _ticks)
     {
         ticks = _ticks;
         TimeManager.GetInstance().OnTick += ApplyTick;
@@ -27,8 +27,7 @@ public class WaitForTicks : CustomYieldInstruction
 
     public void ApplyTick()
     {
-        //Debug.Log(ticks); // when this is commented out the behaviour changes?????
-        ticks--;
+        ticks -= TimeManager.GetInstance().GetDeltaTime();
     }
 
 }
