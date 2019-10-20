@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 using UnityEngine;
 
 using Sirenix.OdinInspector;
@@ -50,6 +52,10 @@ public class PlayerLook : MonoBehaviour
 	[MinValue(-0f), MaxValue(360f)]
 	[SerializeField, Tooltip("The maximum rotation allowed for the camera's vertical axis")]
 	float maxCamHorizRotation = 90f;
+
+	[ReadOnly]
+	[SerializeField, Tooltip("A list of all scripts 'blocking' the player from looking around")]
+	List<MonoBehaviour> lookBlocks = new List<MonoBehaviour>();
 	#endregion Variables
 
 	#region MonoBehaviour
@@ -68,10 +74,61 @@ public class PlayerLook : MonoBehaviour
 
 	#region Public Methods
 	/// <summary>
+	/// Add a block, preventing the player from looking around (when called, just pass in the script that is calling this method with the 'this' keyword)
+	/// </summary>
+	/// <param name="_block">The script blocking the player from looking around</param>
+	public void AddLookBlock(MonoBehaviour _block)
+	{
+		if(!lookBlocks.Contains(_block))
+		{
+			lookBlocks.Add(_block);
+		}
+	}
+
+	/// <summary>
+	/// Remove the block, allowing the player to look around again if the list is now empty (when called, just pass in the script that is calling this method with the 'this' keyword)
+	/// </summary>
+	/// <param name="_block">The block to remove</param>
+	public void RemoveLookBlock(MonoBehaviour _block)
+	{
+		if(lookBlocks.Contains(_block))
+		{
+			lookBlocks.Remove(_block);
+		}
+	}
+	#endregion Public Methods
+
+	#region Private Methods
+	/// <summary>
+	/// Try looking when receiving input
+	/// </summary>
+	/// <param name="_eventData">The Rewired input event data</param>
+	private void TryLook(InputActionEventData _eventData)
+	{
+		/* Player cannot look around if any of the following are true:
+		 *	- The game is paused
+		 *	- The input script is unable to move
+		 *	- Sky View is enabled
+		 *	- There is at least one blocker registered on this script
+		 */
+		if (PauseManager.GetInstance().GetIsPaused() || !input.GetCanMove() || MeasureModeManager.GetInstance().GetMeasureMode() || lookBlocks.Count > 0)
+		{
+			return;
+		}
+
+		float vertAxis = input.Player.GetAxis(lookVertActionName);
+		float horzAxis = input.Player.GetAxis(lookHorzActionName);
+
+		spinObject.transform.Rotate(new Vector3(0, lookHorizSpeed * horzAxis, 0));
+
+		ApplyVertRotation(lookVertSpeed * vertAxis);
+	}
+
+	/// <summary>
 	/// Rotate the player up/down based on look speed
 	/// </summary>
 	/// <param name="_lookVertSpeed">The speed to move at</param>
-	public void ApplyVertRotation(float _lookVertSpeed)
+	private void ApplyVertRotation(float _lookVertSpeed)
 	{
 		Vector3 camRotation = new Vector3(lookObject.transform.localEulerAngles.x, 0, 0);
 
@@ -96,27 +153,6 @@ public class PlayerLook : MonoBehaviour
 			camRotation.x = maxCamHorizRotation;
 		}
 		lookObject.transform.localEulerAngles = camRotation;
-	}
-	#endregion Public Methods
-
-	#region Private Methods
-	/// <summary>
-	/// Try looking when receiving input
-	/// </summary>
-	/// <param name="_eventData">The Rewired input event data</param>
-	private void TryLook(InputActionEventData _eventData)
-	{
-		if (PauseManager.GetInstance().GetIsPaused() || !input.GetCanMove() || MeasureModeManager.GetInstance().GetMeasureMode())
-		{
-			return;
-		}
-
-		float vertAxis = input.Player.GetAxis(lookVertActionName);
-		float horzAxis = input.Player.GetAxis(lookHorzActionName);
-
-		spinObject.transform.Rotate(new Vector3(0, lookHorizSpeed * horzAxis, 0));
-
-		ApplyVertRotation(lookVertSpeed * vertAxis);
 	}
 	#endregion Private Methods
 
