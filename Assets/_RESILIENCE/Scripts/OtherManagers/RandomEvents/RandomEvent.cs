@@ -4,22 +4,20 @@ using UnityEngine;
 
 using Sirenix.OdinInspector;
 
-[System.Serializable]
-public class RandomEvent
+public class RandomEvent : MonoBehaviour
 {
 	#region Variables
 	[ValidateInput("StringNotEmpty", "The name of this event cannot be empty")]
 	[SerializeField, Tooltip("The name of the random event")]
-	string name;
+	string eventName;
 
-	[MinValue(0)]
+	[MinValue(0), ValidateInput("GreaterThanZero", "This event will not be able to happen if its chance is 0")]
 	[SerializeField, Tooltip("The likelihood of this event occurring (must be non-zero to be possible)")]
 	int chance = 0;
 
-	[ValidateInput("ListContainsNoNulls", "There are null RandomEventEffects in this list. Either remove them or fix the reference.")]
-	[ValidateInput("ListNotEmpty", "You must specify at least one effect to trigger when this event is invoked")]
+	[ReadOnly]
 	[SerializeField, Tooltip("The list of all effects to run when the event is invoked")]
-	List<RandomEventEffect> effects = new List<RandomEventEffect>();
+	RandomEventEffect[] effects;
 
 	[ReadOnly]
 	[SerializeField, Tooltip("The effects not yet completed from this event")]
@@ -31,9 +29,9 @@ public class RandomEvent
 	/// Get the name of the random event
 	/// </summary>
 	/// <returns>The string name of the event</returns>
-	public string GetName()
+	public string GetEventName()
 	{
-		return name;
+		return eventName;
 	}
 
 	/// <summary>
@@ -59,6 +57,13 @@ public class RandomEvent
 	public event EventHandler OnEventEnd;
 	#endregion Events
 
+	#region MonoBehaviour
+	private void Awake()
+	{
+		FindEffects();
+	}
+	#endregion MonoBehaviour
+
 	#region Public Methods
 	/// <summary>
 	/// Run all the effects as part of this event
@@ -83,13 +88,22 @@ public class RandomEvent
 		}
 	}
 
-	public string ToString()
+	public override string ToString()
 	{
-		return name;
+		return eventName;
 	}
 	#endregion Public Methods
 
 	#region Private Methods
+	/// <summary>
+	/// Find all effects attached to the random event
+	/// </summary>
+	public void FindEffects()
+	{
+		effects = GetComponents<RandomEventEffect>();
+		System.Array.Sort(effects, delegate (RandomEventEffect ree1, RandomEventEffect ree2) { return ree1.GetPriority().CompareTo(ree2.GetPriority()); });
+	}
+
 	/// <summary>
 	/// Mark the effect as completed and check if there are still more effects being invoked (called by the _effect's OnEffectEnd event)
 	/// </summary>
@@ -130,6 +144,16 @@ public class RandomEvent
 	private bool StringNotEmpty(string _text)
 	{
 		return !string.IsNullOrEmpty(_text);
+	}
+
+	/// <summary>
+	/// Check that an int is greater than 0
+	/// </summary>
+	/// <param name="_num">The number to check</param>
+	/// <returns>True if the number is greater than 0 and false otherwise</returns>
+	private bool GreaterThanZero(int _num)
+	{
+		return _num > 0;
 	}
 
 	/// <summary>
