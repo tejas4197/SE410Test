@@ -106,5 +106,5 @@ public class RefugeeManager : Singleton<RefugeeManager>
 public class RefugeeArrivals
 {
     public int numRefugees;
-    public int timeToNextArrival;
+    public float timeToNextArrival;
 }

@@ -18,7 +18,7 @@ public class Refugee : MonoBehaviour
     private Hydration hydration;
     private OverallWellbeing wellbeing;
 
-    private float updateStatTimer = 2;
+    private float updateStatTimer = 2f;
 
     #endregion
 

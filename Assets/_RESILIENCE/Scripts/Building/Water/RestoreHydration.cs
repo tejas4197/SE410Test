@@ -33,7 +33,7 @@ public class RestoreHydration : MonoBehaviour
     /// </summary>
     /// <param name="timeToWait">time to wait between restoring hydration 1 tick.</param>
     /// <returns>IEnumerator, runs in background.</returns>
-    IEnumerator RestoreHydrationUpdate(int timeToWait)
+    IEnumerator RestoreHydrationUpdate(float timeToWait)
     {
         while (true)
         {
