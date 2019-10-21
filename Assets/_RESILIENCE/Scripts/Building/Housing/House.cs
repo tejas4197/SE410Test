@@ -75,7 +75,7 @@ public class House : Building
     /// <returns></returns>
     protected override IEnumerator BuildingConstructionBegin()
     {
-        yield return new WaitForSeconds(constructionTime);
+        yield return new WaitForTicks(constructionTime);
 
         HousingManager.GetInstance().NewHouseBuilt(this);
     }

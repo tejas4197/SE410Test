@@ -20,6 +20,11 @@ public class Refugee : MonoBehaviour
     private Food food;
     private OverallWellbeing wellbeing;
 
+    private Material myMat;
+
+    private float updateStatTimer = 2f;
+    private float currTime = 0;
+
     #endregion
 
     #region GettersSetters
@@ -49,73 +54,68 @@ public class Refugee : MonoBehaviour
     }
     #endregion
 
+    #region MONOBEHAVIOUR
+
     private void Start()
     {
+        cachedTransform = transform;
         health = GetComponent<Health>();
         hydration = GetComponent<Hydration>();
         food = GetComponent<Food>();
         wellbeing = GetComponent<OverallWellbeing>();
 
+        myMat = GetComponent<Renderer>().material;
+
         health.Died += OnDiedEventHandler;
-
-        StartCoroutine(UpdateHealth(RefugeeManager.GetInstance().GetUpdateHealthTimer()));
-        StartCoroutine(UpdateHydration(RefugeeManager.GetInstance().GetUpdateHealthTimer()));
-        StartCoroutine(UpdateWellBeing(RefugeeManager.GetInstance().GetUpdateHealthTimer()));
-        cachedTransform = transform;
+        TimeManager.GetInstance().OnTick += TickHandler;
     }
+    #endregion
 
-    private IEnumerator UpdateHealth(float timer)
+    private void TickHandler()
     {
-        while (true)
+        currTime += Time.deltaTime;
+        if(currTime >= updateStatTimer)
         {
-            if (house == null)
-            {
-                health.SubtractCurrStat(1);
-            }
-            else
-            {
-                int healthGoal = house.GetHealth().GetMaxStatVal();
-                if (healthGoal > health.GetCurrStatVal())
-                    health.AddCurrStat(1);
-                if (healthGoal < health.GetCurrStatVal())
-                    health.SubtractCurrStat(1);
-            }
-            yield return new WaitForSeconds(timer);
+            UpdateHealth();
+            UpdateHydration();
+            UpdateWellBeing();
+
+            currTime = 0;
         }
     }
 
-    private IEnumerator UpdateHydration(float waitTime)
+    private void UpdateHealth()
     {
-        while (true)
+        if(house == null || house.GetType() == typeof(HomelessHouse))
         {
-            if (house == null)
-            {
-                hydration.SubtractCurrStat(1);
-            }
-            else
-            {
-                int healthGoal = house.GetWaterHealth();
-                if (healthGoal > hydration.GetCurrStatVal())
-                    hydration.AddCurrStat(1);
-                if (healthGoal < hydration.GetCurrStatVal())
-                    hydration.SubtractCurrStat(1);
-            }
-            yield return new WaitForSeconds(waitTime);
+            health.SubtractCurrStat(1);
+        }
+        else
+        {
+            Debug.Log(house);
+            health.SetMaxStat(house.GetHealth().GetCurrStatVal());
+            health.AddCurrStat(1);
         }
     }
 
-    private IEnumerator UpdateWellBeing(float waitTime)
+    private void UpdateHydration()
     {
-        while (true)
+        if (house == null) //We don't want to subtract health from registered homeless currently.
         {
-            wellbeing.SetCurrStat(health.GetCurrStatVal(), hydration.GetCurrStatVal());
-
-            Renderer matRenderer = this.GetComponent<Renderer>();
-            Material mat = new Material(matRenderer.material);
-            mat.SetColor("_BaseColor", Color.Lerp(unhealthyColor, healthyColor, (wellbeing.GetCurrStatVal() * 1.0f) / 100.0f));
-            matRenderer.material = mat;
-            yield return new WaitForSeconds(waitTime);
+            hydration.SubtractCurrStat(1);
         }
+        else if (!(house.GetType() == typeof(HomelessHouse)))
+        {
+            hydration.SetMaxStat(house.GetWaterHealth());
+            health.AddCurrStat(1);
+        }
+    }
+
+    private void UpdateWellBeing()
+    {
+        wellbeing.SetCurrStat(health.GetCurrStatVal(), hydration.GetCurrStatVal());
+
+        myMat.SetColor("_BaseColor", Color.Lerp(unhealthyColor, healthyColor, wellbeing.GetCurrStatVal()*1f / wellbeing.GetMaxStatVal()));
     }
 
     public void SetNewDestination(Vector3 targetPos)
