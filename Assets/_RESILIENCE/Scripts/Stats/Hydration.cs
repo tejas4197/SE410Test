@@ -7,8 +7,34 @@ using UnityEngine;
 /// </summary>
 public class Hydration : Int_Stat
 {
+    #region ATTRIBUTES
+
     private bool isFullyHydrated = true;
     private bool isDehydrated = false;
+
+    #endregion
+
+    #region GETTERS_SETTERS
+
+    /// <summary>
+    /// Tells whether the currStat Value is at maximum.
+    /// </summary>
+    /// <returns>Returns if the hydration stat is at maximum.</returns>
+    public bool GetFullyHydrated()
+    {
+        return isFullyHydrated;
+    }
+
+    /// <summary>
+    /// Tells whether the currStat Value is at the minimum.
+    /// </summary>
+    /// <returns>Returns if the hydration stat is at minimum.</returns>
+    public bool GetDehydrated()
+    {
+        return isDehydrated;
+    }
+
+    #endregion
 
     /// <summary>
     /// Sets whether or not the stat is fully hydrated, dehydrated, or is in between.
