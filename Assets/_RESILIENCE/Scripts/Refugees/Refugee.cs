@@ -18,6 +18,8 @@ public class Refugee : MonoBehaviour
     private Hydration hydration;
     private OverallWellbeing wellbeing;
 
+    private float updateStatTimer = 2f;
+
     #endregion
 
     #region GettersSetters
@@ -55,13 +57,13 @@ public class Refugee : MonoBehaviour
 
         health.Died += OnDiedEventHandler;
 
-        StartCoroutine(UpdateHealth(RefugeeManager.GetInstance().GetUpdateHealthTimer()));
-        StartCoroutine(UpdateHydration(RefugeeManager.GetInstance().GetUpdateHealthTimer()));
-        StartCoroutine(UpdateWellBeing(RefugeeManager.GetInstance().GetUpdateHealthTimer()));
+        StartCoroutine(UpdateHealth());
+        StartCoroutine(UpdateHydration());
+        StartCoroutine(UpdateWellBeing());
         cachedTransform = transform;
     }
 
-    private IEnumerator UpdateHealth(float timer)
+    private IEnumerator UpdateHealth()
     {
         while (true)
         {
@@ -77,11 +79,11 @@ public class Refugee : MonoBehaviour
                 if (healthGoal < health.GetCurrStatVal())
                     health.SubtractCurrStat(1);
             }
-            yield return new WaitForSeconds(timer);
+            yield return new WaitForTicks(updateStatTimer);
         }
     }
 
-    private IEnumerator UpdateHydration(float waitTime)
+    private IEnumerator UpdateHydration()
     {
         while (true)
         {
@@ -97,11 +99,11 @@ public class Refugee : MonoBehaviour
                 if (healthGoal < hydration.GetCurrStatVal())
                     hydration.SubtractCurrStat(1);
             }
-            yield return new WaitForSeconds(waitTime);
+            yield return new WaitForTicks(updateStatTimer);
         }
     }
 
-    private IEnumerator UpdateWellBeing(float waitTime)
+    private IEnumerator UpdateWellBeing()
     {
         while (true)
         {
@@ -111,7 +113,7 @@ public class Refugee : MonoBehaviour
             Material mat = new Material(matRenderer.material);
             mat.SetColor("_BaseColor", Color.Lerp(unhealthyColor, healthyColor, (wellbeing.GetCurrStatVal() * 1.0f) / 100.0f));
             matRenderer.material = mat;
-            yield return new WaitForSeconds(waitTime);
+            yield return new WaitForTicks(updateStatTimer);
         }
     }
 
