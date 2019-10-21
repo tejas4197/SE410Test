@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+/// <summary>
+/// Refugee class, handles all basic refugee assignment and stat modification.
+/// </summary>
 [RequireComponent(typeof(Health))]
 [RequireComponent(typeof(Hydration))]
 [RequireComponent(typeof(Food))]
@@ -18,6 +21,7 @@ public class Refugee : MonoBehaviour
     private Health health;
     private Hydration hydration;
     private Food food;
+    private Hygiene hygiene;
     private OverallWellbeing wellbeing;
 
     private Material myMat;
@@ -43,6 +47,24 @@ public class Refugee : MonoBehaviour
     public Hydration GetHydration()
     {
         return hydration;
+    }
+
+    /// <summary>
+    /// Gets the food stat reference.
+    /// </summary>
+    /// <returns>Food stat reference for this refugee.</returns>
+    public Food GetFood()
+    {
+        return food;
+    }
+
+    /// <summary>
+    /// Gets the hygiene stat reference.
+    /// </summary>
+    /// <returns>Gets the hygiene stat reference.</returns>
+    public Hygiene GetHygiene()
+    {
+        return hygiene;
     }
 
     /// <summary>
@@ -78,6 +100,7 @@ public class Refugee : MonoBehaviour
         {
             UpdateHealth();
             UpdateHydration();
+            UpdateFood();
             UpdateWellBeing();
 
             currTime = 0;
@@ -108,6 +131,19 @@ public class Refugee : MonoBehaviour
         {
             hydration.SetMaxStat(house.GetWaterHealth());
             health.AddCurrStat(1);
+        }
+    }
+
+    private void UpdateFood()
+    {
+        if(house == null)
+        {
+            food.SubtractCurrStat(1);
+        }
+        else if(!(house.GetType() == typeof(HomelessHouse)))
+        {
+            food.SetMaxStat(house.GetFoodHealth());
+            food.AddCurrStat(1);
         }
     }
 

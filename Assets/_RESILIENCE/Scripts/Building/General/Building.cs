@@ -24,7 +24,7 @@ public abstract class Building : MonoBehaviour
     protected Health health;
     private int hashVal;
 
-    public Transform cachedTransform;
+    [HideInInspector] public Transform cachedTransform;
     #endregion
 
     #region Getters_Setters

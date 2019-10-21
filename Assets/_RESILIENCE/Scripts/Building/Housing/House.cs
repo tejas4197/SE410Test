@@ -16,6 +16,8 @@ public class House : Building
 
     private List<Health> waterHealth = new List<Health>();
 
+    private List<Health> foodHealth = new List<Health>();
+
     #endregion VARIABLES
 
     #region GETTERS_SETTERS
@@ -37,16 +39,27 @@ public class House : Building
 
     public int GetWaterHealth()
     {
-        if (waterHealth.Count == 0)
-        {
-            return 0;
-        }
         int highestCurrentHealth = 0;
-        foreach (Health h in waterHealth)
+
+        for (int i = 0; i < waterHealth.Count; ++i)
         {
-            if (h.GetCurrStatVal() > highestCurrentHealth)
+            if (waterHealth[i].GetCurrStatVal() > highestCurrentHealth)
             {
-                highestCurrentHealth = h.GetCurrStatVal();
+                highestCurrentHealth = waterHealth[i].GetCurrStatVal();
+            }
+        }
+        return highestCurrentHealth;
+    }
+
+    public int GetFoodHealth()
+    {
+        int highestCurrentHealth = 0;
+
+        for (int i = 0; i < foodHealth.Count; ++i)
+        {
+            if (foodHealth[i].GetCurrStatVal() > highestCurrentHealth)
+            {
+                highestCurrentHealth = foodHealth[i].GetCurrStatVal();
             }
         }
         return highestCurrentHealth;
@@ -155,6 +168,11 @@ public class House : Building
     public void AddWaterSource(Health _waterHealth)
     {
         waterHealth.Add(_waterHealth);
+    }
+
+    public void AddFoodSource(Health _food)
+    {
+        foodHealth.Add(_food);
     }
 
     #endregion PUBLIC_METHODS
