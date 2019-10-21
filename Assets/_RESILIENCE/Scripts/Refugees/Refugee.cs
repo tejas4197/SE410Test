@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 [RequireComponent(typeof(Health))]
 [RequireComponent(typeof(Hydration))]
+[RequireComponent(typeof(Food))]
 [RequireComponent(typeof(OverallWellbeing))]
 public class Refugee : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class Refugee : MonoBehaviour
     private House house;
     private Health health;
     private Hydration hydration;
+    private Food food;
     private OverallWellbeing wellbeing;
 
     #endregion
@@ -51,6 +53,7 @@ public class Refugee : MonoBehaviour
     {
         health = GetComponent<Health>();
         hydration = GetComponent<Hydration>();
+        food = GetComponent<Food>();
         wellbeing = GetComponent<OverallWellbeing>();
 
         health.Died += OnDiedEventHandler;
