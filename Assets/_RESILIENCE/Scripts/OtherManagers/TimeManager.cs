@@ -31,7 +31,7 @@ public class TimeManager : Singleton<TimeManager>
 	[ReadOnly]
 	[SerializeField, Tooltip("The amount of time that has passed since the last tick")]
 	float deltaTime = 0f;
-	#endregion VARIABLES
+    #endregion VARIABLES
 
 	#region GETTERS_SETTERS
 	/// <summary>
@@ -176,7 +176,7 @@ public class TimeManager : Singleton<TimeManager>
 	#region MONOBEHAVIOUR
 	private void Start()
 	{
-		if (isTimePassing)
+        if (isTimePassing)
 		{
 			StartCoroutine("TimePasser");
 		}
