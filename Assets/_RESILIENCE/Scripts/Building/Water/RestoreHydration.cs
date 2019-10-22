@@ -41,7 +41,7 @@ public class RestoreHydration : MonoBehaviour
             {
                 FireRestoreHydration();
             }
-            yield return new WaitForSeconds(timeToWait);
+            yield return new WaitForTicks(timeToWait);
         }
     }
 

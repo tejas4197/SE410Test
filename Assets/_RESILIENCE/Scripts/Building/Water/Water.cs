@@ -25,7 +25,7 @@ public class Water : Building
     /// <returns></returns>
     protected override IEnumerator BuildingConstructionBegin()
     {
-        yield return new WaitForSeconds(constructionTime);
+        yield return new WaitForTicks(constructionTime);
 
         HousingManager housingManager = HousingManager.GetInstance();
         float distance;
