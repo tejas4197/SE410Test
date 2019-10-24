@@ -21,6 +21,8 @@ public abstract class Building : MonoBehaviour
     [SerializeField] protected GameObject interactPopup;
     [SerializeField] protected float constructionTime = 5f;
     [SerializeField] protected int price;
+    [SerializeField] protected int upgradePrice;
+    [SerializeField] protected bool isUpgraded;
     protected Health health;
     private int hashVal;
 
@@ -48,12 +50,26 @@ public abstract class Building : MonoBehaviour
     }
 
     /// <summary>
-    /// Returns the price of the building.
+    /// Returns the price to construct the building.
     /// </summary>
     /// <returns>int, Price of Building.</returns>
     public int GetPrice() //Temp until we find a better place
     {
         return price;
+    }
+
+    /// <summary>
+    /// Returns the price to upgrade the building
+    /// </summary>
+    /// <returns></returns>
+    public int GetUpgradePrice()
+    {
+        return upgradePrice;
+    }
+
+    public bool GetIsUpgraded()
+    {
+        return isUpgraded;
     }
 
     #endregion
@@ -67,6 +83,7 @@ public abstract class Building : MonoBehaviour
         hashVal = GetHashCode();
         interactPopup.gameObject.SetActive(false);
         cachedTransform = transform;
+        isUpgraded = false;
         customStart();
     }
 
@@ -85,6 +102,11 @@ public abstract class Building : MonoBehaviour
     /// </summary>
     /// <returns></returns>
     protected abstract IEnumerator BuildingConstructionBegin();
+
+    /// <summary>
+    /// Handles building stat changes during an upgrade
+    /// </summary>
+    public abstract void Upgrade();
 
     /// <summary>
     /// Interact popup turns on.

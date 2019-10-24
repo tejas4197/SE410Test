@@ -80,6 +80,14 @@ public class House : Building
         HousingManager.GetInstance().NewHouseBuilt(this);
     }
 
+    public override void Upgrade()
+    {
+        prefOccupancy = Mathf.RoundToInt(prefOccupancy * 1.5f);
+        maxOccupancy = Mathf.RoundToInt(maxOccupancy * 1.5f);
+        health.RestoreHealth();
+        // increase max health and/or reduce deterioration rate
+        isUpgraded = true;
+    }
 
     #region PUBLIC_METHODS
 

@@ -19,6 +19,7 @@ public class ReceptionCenter : Building
     }
     protected override void customStart()
     {
+        isUpgraded = true;
         StartCoroutine(BuildingConstructionBegin());
     }
 
@@ -27,6 +28,13 @@ public class ReceptionCenter : Building
         yield return new WaitForTicks(constructionTime);
 
         StartCoroutine(ProcessAllRefugees());
+    }
+
+    /// <summary>
+    /// override of upgrade stats method, the reception center cannot be upgraded
+    /// </summary>
+    public override void Upgrade()
+    {
     }
 
     public void AddRefugee(Refugee newRefugee)

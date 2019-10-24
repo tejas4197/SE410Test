@@ -47,4 +47,10 @@ public class Water : Building
     {
         StartCoroutine(BuildingConstructionBegin());
     }
+
+    public override void Upgrade()
+    {
+        //TODO update this when stat formats change
+        isUpgraded = true;
+    }
 }
