@@ -224,6 +224,23 @@ public class PlayerWalk3D : MonoBehaviour
 			strafeAxis = 0;
 		}
 
+		// This function is called when either axis is active, so this is a way to ensure that, when both axes are active, the function only runs once per frame
+		// Arbitrary way to decide which one is the one that exits without doing anything
+		if(_eventData.actionName == walkActionName)
+		{
+			if (walkAxis <= strafeAxis)
+			{
+				return;
+			}
+		}
+		else
+		{
+			if (strafeAxis < walkAxis)
+			{
+				return;
+			}
+		}
+
 		// Player is not moving
 		if (walkAxis == 0 && strafeAxis == 0)
 		{
@@ -238,12 +255,14 @@ public class PlayerWalk3D : MonoBehaviour
 		{
 			Vector3 moveVector = Vector3.zero;
 			Vector2 inputAxes = new Vector2(strafeAxis, walkAxis);
-			inputAxes.Normalize();
 
-			moveVector += transform.TransformDirection(Vector3.forward) * inputAxes.y;
-			moveVector += transform.TransformDirection(Vector3.right) * inputAxes.x;
+			moveVector += transform.forward * inputAxes.y;
+			moveVector += transform.right * inputAxes.x;
 
-			//moveVector.Normalize();
+			if (moveVector.magnitude > 1)
+			{
+				moveVector.Normalize();
+			}
 
 			moveVector *= currentSpeed;
 
