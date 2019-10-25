@@ -228,14 +228,14 @@ public class PlayerWalk3D : MonoBehaviour
 		// Arbitrary way to decide which one is the one that exits without doing anything
 		if(_eventData.actionName == walkActionName)
 		{
-			if (walkAxis <= strafeAxis)
+			if (Mathf.Abs(walkAxis) <= Mathf.Abs(strafeAxis))
 			{
 				return;
 			}
 		}
 		else
 		{
-			if (strafeAxis < walkAxis)
+			if (Mathf.Abs(strafeAxis) < Mathf.Abs(walkAxis))
 			{
 				return;
 			}
