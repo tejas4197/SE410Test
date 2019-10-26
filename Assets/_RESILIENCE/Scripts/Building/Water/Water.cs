@@ -5,7 +5,6 @@ using UnityEngine;
 /// <summary>
 /// Water Pump Building. has a radius of effect and a radius that it effects to a lesser degree.
 /// </summary>
-[RequireComponent(typeof(Health))]
 public class Water : Building
 {
     [SerializeField] private int prefRadius;

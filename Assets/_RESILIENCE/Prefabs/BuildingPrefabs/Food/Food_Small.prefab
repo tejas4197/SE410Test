@@ -347,7 +347,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: I'm a pump!
+  m_Text: I'm a kitchen!
 --- !u!1 &3201239167023787495
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,7 +426,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: I don't do anything yet!
+  m_Text: I only do a bit right now.
 --- !u!1 &6519396208748115461
 GameObject:
   m_ObjectHideFlags: 0
@@ -442,7 +442,7 @@ GameObject:
   - component: {fileID: 6861757524267460453}
   - component: {fileID: 6284369255769183892}
   m_Layer: 10
-  m_Name: Small-Food
+  m_Name: Food_Small
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -489,7 +489,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c01f70829e9346541bd255b02d45ded9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactPopup: {fileID: 0}
+  interactPopup: {fileID: 7950708265318370739}
   constructionTime: 5
   price: 300
   cachedTransform: {fileID: 0}

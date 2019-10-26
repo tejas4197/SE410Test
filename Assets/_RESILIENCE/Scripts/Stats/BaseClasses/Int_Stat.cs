@@ -32,7 +32,17 @@ public abstract class Int_Stat : Stat
     /// <param name="_val">Value to add to the stat.</param>
     public void AddCurrStat(int _val)
     {
-        SetCurrStat(currStatVal + _val);
+        if(_val < 0)
+        {
+            SubtractCurrStat(Mathf.Abs(_val));
+            return;
+        }
+        if(currStatVal > maxStatVal)
+        {
+            Debug.LogError("Trying to add to currstat when already above max value: " + this.gameObject);
+            return;
+        }
+        currStatVal = Mathf.Min(maxStatVal, currStatVal + _val);
         CurrStatChanged();
     }
 
@@ -42,7 +52,18 @@ public abstract class Int_Stat : Stat
     /// <param name="_val">Value to subtract from the stat.</param>
     public void SubtractCurrStat(int _val)
     {
-        SetCurrStat(currStatVal - _val);
+        if(_val < 0)
+        {
+            AddCurrStat(Mathf.Abs(_val));
+            return;
+        }
+        if(currStatVal< minStatVal)
+        {
+            Debug.LogError("Trying to subtract to currstat when already below min value: " + this.gameObject);
+            return;
+        }
+
+        currStatVal = Mathf.Max(minStatVal, currStatVal - _val);
         CurrStatChanged();
     }
 

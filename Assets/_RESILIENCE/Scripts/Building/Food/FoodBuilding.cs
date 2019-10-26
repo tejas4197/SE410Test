@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Health))]
 public class FoodBuilding : Building
 {
     [SerializeField] private int prefRadius;
@@ -14,6 +13,7 @@ public class FoodBuilding : Building
     /// </summary>
     protected override void customStart()
     {
+        Debug.Log("Custom Start!");
     }
 
     /// <summary>
