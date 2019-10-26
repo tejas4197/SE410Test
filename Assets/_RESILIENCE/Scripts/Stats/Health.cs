@@ -36,7 +36,7 @@ public class Health : Int_Stat
     /// </summary>
     protected override void CurrStatChanged()
     {
-        if(currStatVal <= minStatVal)
+        if(currStatVal <= minStatVal && isAlive)
         {
             OnDied();
         }

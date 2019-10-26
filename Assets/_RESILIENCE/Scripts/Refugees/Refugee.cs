@@ -161,7 +161,7 @@ public class Refugee : MonoBehaviour
     /// </summary>
     private void TickHandler()
     {
-        currTime += Time.deltaTime;
+        currTime += TimeManager.GetInstance().GetDeltaTime();
         if(currTime >= updateStatTimer)
         {
             UpdateHealth();
