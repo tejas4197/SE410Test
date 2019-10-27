@@ -33,18 +33,7 @@ public class TriggerTimePassed : EventTrigger
 	/// </summary>
 	private IEnumerator Timer()
 	{
-		float timeElapsed = 0f;
-
-		while (timeElapsed < waitTime)
-		{
-			yield return null;
-
-			// Only increment the timer if the game isn't paused
-			if (!PauseManager.GetInstance().GetIsPaused())
-			{
-				timeElapsed += Time.deltaTime;
-			}
-		}
+		yield return new WaitForTicks(waitTime);
 
 		InvokeEvent();
 	}

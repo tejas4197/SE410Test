@@ -94,17 +94,7 @@ public abstract class EventAction : MonoBehaviour
 	/// </summary>
 	protected IEnumerator ActionTimer()
 	{
-		float timeElapsed = 0f;
-
-		while (timeElapsed < waitTime)
-		{
-			yield return null;
-
-			if (!PauseManager.GetInstance().GetIsPaused())
-			{
-				timeElapsed += Time.deltaTime;
-			}
-		}
+		yield return new WaitForTicks(waitTime);
 
 		ExecuteAction();
 
