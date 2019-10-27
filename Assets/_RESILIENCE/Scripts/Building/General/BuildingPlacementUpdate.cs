@@ -16,10 +16,7 @@ using Sirenix.OdinInspector;
 public class BuildingPlacementUpdate : MonoBehaviour
 {
 	#region VARIABLES
-
-	// TODO: camera reference should probably be made static and put in Player script singleton, when that script is refactored
-
-    /// <summary> Instance of BuildingMenuManager singleton, which fires the event for when the user wants to place a building </summary>
+	/// <summary> Instance of BuildingMenuManager singleton, which fires the event for when the user wants to place a building </summary>
     BuildingMenuManager buildMenuInstance;
 
     /// <summary> Coroutine for placing a building, to ensure there is only ever one running </summary>

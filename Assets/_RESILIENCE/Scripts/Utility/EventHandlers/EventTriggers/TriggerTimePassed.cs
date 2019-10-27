@@ -35,7 +35,10 @@ public class TriggerTimePassed : EventTrigger
 	{
 		yield return new WaitForTicks(waitTime);
 
-		InvokeEvent();
+		if (gameObject.activeInHierarchy && enabled)
+		{
+			InvokeEvent();
+		}
 	}
 	#endregion Private Methods
 }

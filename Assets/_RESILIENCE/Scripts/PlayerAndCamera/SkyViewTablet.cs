@@ -2,6 +2,9 @@ using UnityEngine;
 
 using Sirenix.OdinInspector;
 
+/// <summary>
+/// Manage the SkyViewTablet view with input
+/// </summary>
 public class SkyViewTablet : Singleton<SkyViewTablet>
 {
 	#region Variables
