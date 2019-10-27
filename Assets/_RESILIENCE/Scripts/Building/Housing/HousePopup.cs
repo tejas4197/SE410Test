@@ -26,7 +26,7 @@ public class HousePopup : MonoBehaviour
             prefOccupancyText.text = house.GetPrefOccupancy().ToString();
             maxOccupancyText.text = house.GetMaxOccupancy().ToString();
             Button ub = upgradeButton.GetComponent<Button>();
-            ub.GetComponentInChildren<Text>().text = "Upgrade - $" + house.GetUpgradePrice().ToString();
+            ub.GetComponentInChildren<Text>().text = "Upgrade " + house.GetUpgradeLevel().ToString() + "- $" + house.GetUpgradePrice().ToString();
             ub.onClick.AddListener(Upgrade);
         }
     }
@@ -38,7 +38,7 @@ public class HousePopup : MonoBehaviour
 
     private void ToggleButtonEnabled()
     {
-        if (IncomeManager.GetInstance().GetFunds() >= house.GetUpgradePrice() && !house.GetIsUpgraded())
+        if (IncomeManager.GetInstance().GetFunds() >= house.GetUpgradePrice() && house.GetUpgradeLevel() < 2)
         {
             upgradeButton.interactable = true;
         }

@@ -22,7 +22,7 @@ public abstract class Building : MonoBehaviour
     [SerializeField] protected float constructionTime = 5f;
     [SerializeField] protected int price;
     [SerializeField] protected int upgradePrice;
-    [SerializeField] protected bool isUpgraded;
+    [SerializeField] protected int upgradeLevel;
     protected Health health;
     private int hashVal;
 
@@ -67,9 +67,9 @@ public abstract class Building : MonoBehaviour
         return upgradePrice;
     }
 
-    public bool GetIsUpgraded()
+    public int GetUpgradeLevel()
     {
-        return isUpgraded;
+        return upgradeLevel;
     }
 
     #endregion
@@ -83,7 +83,7 @@ public abstract class Building : MonoBehaviour
         hashVal = GetHashCode();
         interactPopup.gameObject.SetActive(false);
         cachedTransform = transform;
-        isUpgraded = false;
+        upgradeLevel = 1;
         customStart();
     }
 

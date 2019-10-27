@@ -19,7 +19,6 @@ public class ReceptionCenter : Building
     }
     protected override void customStart()
     {
-        isUpgraded = true;
         StartCoroutine(BuildingConstructionBegin());
     }
 
@@ -31,10 +30,12 @@ public class ReceptionCenter : Building
     }
 
     /// <summary>
-    /// override of upgrade stats method, the reception center cannot be upgraded
+    /// Upgrades reception center speed
     /// </summary>
     public override void Upgrade()
     {
+        timeToProcess = timeToProcess / 2;
+        upgradeLevel++;
     }
 
     public void AddRefugee(Refugee newRefugee)

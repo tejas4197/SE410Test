@@ -86,7 +86,7 @@ public class House : Building
         maxOccupancy = Mathf.RoundToInt(maxOccupancy * 1.5f);
         health.RestoreHealth();
         // increase max health and/or reduce deterioration rate
-        isUpgraded = true;
+        upgradeLevel++;
     }
 
     #region PUBLIC_METHODS

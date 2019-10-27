@@ -12,7 +12,7 @@ public class HomelessHouse : House
     /// </summary>
     private void OnEnable()
     {
-        isUpgraded = true;
+        upgradeLevel = 10000;
         cachedTransform = transform;
     }
 
