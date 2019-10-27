@@ -51,8 +51,8 @@ public class Water : Building
     public override void Upgrade()
     {
         //TODO update this when stat formats change
-        prefRadius = Mathf.RoundToInt(prefRadius * 1.5f);
-        maxRadius = Mathf.RoundToInt(maxRadius * 1.5f);
+        prefRadius = Mathf.RoundToInt(prefRadius * upgradeMultiplier);
+        maxRadius = Mathf.RoundToInt(maxRadius * upgradeMultiplier);
         health.RestoreHealth();
         upgradeLevel++;
     }

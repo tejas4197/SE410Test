@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using Sirenix.OdinInspector;
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,11 +20,30 @@ using UnityEngine;
 public abstract class Building : MonoBehaviour
 {
     #region Attributes
-    [SerializeField] protected GameObject interactPopup;
+    [SerializeField, Required]
+    protected GameObject interactPopup;
+
     [SerializeField] protected float constructionTime = 5f;
     [SerializeField] protected int price;
-    [SerializeField] protected int upgradePrice;
-    [SerializeField] protected int upgradeLevel;
+
+    /// <summary>
+    /// Cost to upgrade this building
+    /// </summary>
+    [MinValue(0), SerializeField]
+    protected int upgradePrice;
+
+    /// <summary>
+    /// Level to which this building has been upgraded (starting at 0)
+    /// </summary>
+    [MinValue(0), ReadOnly, SerializeField]
+    protected int upgradeLevel = 0;
+
+    /// <summary>
+    /// Quantity to which upgraded buildings' maximum and preferred capacity increase
+    /// </summary>
+    [MinValue(1), SerializeField]
+    protected float upgradeMultiplier = 1.5f;
+
     protected Health health;
     private int hashVal;
 
@@ -67,9 +88,20 @@ public abstract class Building : MonoBehaviour
         return upgradePrice;
     }
 
+    /// <summary>
+    /// Returns the current level the building is upgraded to (starting at 0)
+    /// </summary>
     public int GetUpgradeLevel()
     {
         return upgradeLevel;
+    }
+
+    /// <summary>
+    /// Returns the stat multiplier that the building's stats are increased by upon upgrade
+    /// </summary>
+    public float GetUpgradeMultiplier()
+    {
+        return upgradeMultiplier;
     }
 
     #endregion
@@ -81,9 +113,8 @@ public abstract class Building : MonoBehaviour
     {
         health = GetComponent<Health>();
         hashVal = GetHashCode();
-        interactPopup.gameObject.SetActive(false);
+        interactPopup.SetActive(false);
         cachedTransform = transform;
-        upgradeLevel = 1;
         customStart();
     }
 

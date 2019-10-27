@@ -82,8 +82,8 @@ public class House : Building
 
     public override void Upgrade()
     {
-        prefOccupancy = Mathf.RoundToInt(prefOccupancy * 1.5f);
-        maxOccupancy = Mathf.RoundToInt(maxOccupancy * 1.5f);
+        prefOccupancy = Mathf.RoundToInt(prefOccupancy * upgradeMultiplier);
+        maxOccupancy = Mathf.RoundToInt(maxOccupancy * upgradeMultiplier);
         health.RestoreHealth();
         // increase max health and/or reduce deterioration rate
         upgradeLevel++;
