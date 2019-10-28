@@ -12,6 +12,7 @@ public class HomelessHouse : House
     /// </summary>
     private void OnEnable()
     {
+        upgradeLevel = 10000;
         cachedTransform = transform;
     }
 
@@ -53,5 +54,12 @@ public class HomelessHouse : House
         {
             occupants.Remove(_r);
         }
+    }
+
+    /// <summary>
+    /// Override for upgrading building stats, the homeless house cannot be upgraded
+    /// </summary>
+    public override void Upgrade()
+    {
     }
 }
