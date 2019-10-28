@@ -47,4 +47,13 @@ public class Water : Building
     {
         StartCoroutine(BuildingConstructionBegin());
     }
+
+    public override void Upgrade()
+    {
+        //TODO update this when stat formats change
+        prefRadius = Mathf.RoundToInt(prefRadius * upgradeMultiplier);
+        maxRadius = Mathf.RoundToInt(maxRadius * upgradeMultiplier);
+        health.RestoreHealth();
+        upgradeLevel++;
+    }
 }
