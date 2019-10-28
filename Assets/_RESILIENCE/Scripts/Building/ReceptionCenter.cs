@@ -29,6 +29,15 @@ public class ReceptionCenter : Building
         StartCoroutine(ProcessAllRefugees());
     }
 
+    /// <summary>
+    /// Upgrades reception center speed
+    /// </summary>
+    public override void Upgrade()
+    {
+        timeToProcess = timeToProcess / 2;
+        upgradeLevel++;
+    }
+
     public void AddRefugee(Refugee newRefugee)
     {
         queue.Enqueue(newRefugee);
