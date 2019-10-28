@@ -68,22 +68,6 @@ public class DebugConsole : Singleton<DebugConsole>
         }
     }
 
-   /* /// <summary>
-    /// Accessor for instance, allows the instance of this script to be called without a direct connection
-    /// </summary>
-    public static DebugConsole GetInstance()
-    {
-        if (instance == null)
-        {
-            instance = FindObjectOfType(typeof(DebugConsole)) as DebugConsole;
-            if (instance == null)
-            {
-                
-            }
-        }
-        return instance;
-    }*/
-
     #endregion GETTERS_SETTERS
 
     #region EVENTS
