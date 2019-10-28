@@ -14,38 +14,97 @@ using UnityEngine.AI;
 public class Refugee : MonoBehaviour
 {
     #region Attributes
+    /// <summary>
+    /// Cached transform for performance perposes, used over this.transform
+    /// </summary>
     [HideInInspector] public Transform cachedTransform;
 
+    /// <summary>
+    /// House the refugee lives in
+    /// </summary>
     private House house;
+
+    /// <summary>
+    /// Reference to the refugee's health stat.
+    /// </summary>
     private Health health;
+    /// <summary>
+    /// Reference to the refugee's hydration stat.
+    /// </summary>
     private Hydration hydration;
+    /// <summary>
+    /// Reference to the refugee's food stat.
+    /// </summary>
     private Food food;
+    /// <summary>
+    /// Reference to the refugee's hygiene stat.
+    /// </summary>
     private Hygiene hygiene;
+    /// <summary>
+    /// Reference to the refugee's wellbeing stat.
+    /// </summary>
     private OverallWellbeing wellbeing;
 
+    /// <summary>
+    /// Color the refugee takes when healthy.
+    /// </summary>
     [Header("Material settings")]
     [SerializeField] private Color healthyColor;
+    /// <summary>
+    /// Color the refugee takes when unhealthy.
+    /// </summary>
     [SerializeField] private Color unhealthyColor;
+
+    /// <summary>
+    /// Reference to the refugee's material.
+    /// </summary>
     private Material myMat;
 
+    /// <summary>
+    /// Number of Ticks to wait between updating stat values.
+    /// </summary>
     [Header("Stat UpdateSettings")]
     [Tooltip("Number of Ticks to wait between updating stat values.")]
     [SerializeField] private float updateStatTimer = 2f;
+    /// <summary>
+    /// Amount to decrease health by, if decrease is required. 
+    ///</summary>
     [Tooltip("Amount to decrease health by, if decrease is required.")]
     [SerializeField] private int healthDecrease = 1;
+    /// <summary>
+    /// Amount to increase health by, if decrease is required. 
+    ///</summary>
     [Tooltip("Amount to increase health by, if decrease is required.")]
     [SerializeField] private int healthIncrease = 1;
-    [Tooltip("Amount to decrease hydration by, if decrease is required.")]
+    /// <summary>
+    /// Amount to decrease hydration by, if decrease is required. 
+    ///</summary>
+	[Tooltip("Amount to decrease hydration by, if decrease is required.")]
     [SerializeField] private int hydrationDecrease = 1;
-    [Tooltip("Amount to increase hydration by, if decrease is required.")]
+    /// <summary>
+	/// Amount to increase hydration by, if decrease is required. 
+	///</summary>
+	[Tooltip("Amount to increase hydration by, if decrease is required.")]
     [SerializeField] private int hydrationIncrease = 1;
-    [Tooltip("Amount to decrease food by, if decrease is required.")]
+    /// <summary>
+	/// Amount to decrease food by, if decrease is required. 
+	///</summary>
+	[Tooltip("Amount to decrease food by, if decrease is required.")]
     [SerializeField] private int foodDecrease = 1;
-    [Tooltip("Amount to increase food by, if decrease is required.")]
+    /// <summary>
+	/// Amount to increase food by, if decrease is required. 
+	///</summary>
+	[Tooltip("Amount to increase food by, if decrease is required.")]
     [SerializeField] private int foodIncrease = 1;
-    [Tooltip("Amount to decrease hygiene by, if decrease is required.")]
+    /// <summary>
+	/// Amount to decrease hygiene by, if decrease is required. 
+	///</summary>
+	[Tooltip("Amount to decrease hygiene by, if decrease is required.")]
     [SerializeField] private int hygieneDecrease = 1;
-    [Tooltip("Amount to increase hygiene by, if decrease is required.")]
+    /// <summary>
+	/// Amount to increase hygiene by, if decrease is required. 
+	///</summary>
+	[Tooltip("Amount to increase hygiene by, if decrease is required.")]
     [SerializeField] private int hygieneIncrease = 1;
 
 

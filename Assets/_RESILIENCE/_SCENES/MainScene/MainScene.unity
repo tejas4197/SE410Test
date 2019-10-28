@@ -636,7 +636,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 801037243}
   m_HandleRect: {fileID: 801037242}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -829,6 +829,7 @@ GameObject:
   m_Component:
   - component: {fileID: 353309263}
   - component: {fileID: 353309262}
+  - component: {fileID: 353309259}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -836,6 +837,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &353309259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 353309258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3eb60169d4f989408306a3435059d43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goodStatValue: 70
+  badStatValue: 30
 --- !u!114 &353309262
 MonoBehaviour:
   m_ObjectHideFlags: 0

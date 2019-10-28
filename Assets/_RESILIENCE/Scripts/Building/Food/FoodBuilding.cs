@@ -2,9 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Building for giving out food to refugees.
+/// </summary>
 public class FoodBuilding : Building
 {
+    [Min(0)]
     [SerializeField] private int prefRadius;
+    [Min(0)]
     [SerializeField] private int maxRadius;
 
 
@@ -43,5 +48,13 @@ public class FoodBuilding : Building
     public override void BuildingPlaced()
     {
         StartCoroutine(BuildingConstructionBegin());
+    }
+
+    /// <summary>
+    /// Upgrades the food Building.
+    /// </summary>
+    public override void Upgrade()
+    {
+        throw new System.NotImplementedException();
     }
 }

@@ -173,11 +173,19 @@ public class House : Building
         }
     }
 
+    /// <summary>
+    /// Adds a water source to a house. Houses look for the best water supply for it's occupants.
+    /// </summary>
+    /// <param name="_waterHealth">Health stat of water building</param>
     public void AddWaterSource(Health _waterHealth)
     {
         waterHealth.Add(_waterHealth);
     }
 
+    /// <summary>
+    /// Adds a food source to a house. Houses look for the best food supply for it's occupants.
+    /// </summary>
+    /// <param name="_food">Health stat of food building</param>
     public void AddFoodSource(Health _food)
     {
         foodHealth.Add(_food);
