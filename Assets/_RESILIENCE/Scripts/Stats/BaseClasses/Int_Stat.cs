@@ -7,11 +7,26 @@ using UnityEngine;
 /// </summary>
 public abstract class Int_Stat : Stat
 {
+    #region ATTRIBUTES
+    /// <summary>
+    /// Stats do not go below this value.
+    /// </summary>
     [SerializeField] protected int minStatVal;
+    /// <summary>
+    /// Stats can not be added to get above this value. May be above this value if the currStat starts larger than the Max Value.
+    /// </summary>
     [SerializeField] protected int maxStatVal;
+    /// <summary>
+    /// On application start, this determines what currStatValue starts at.
+    /// </summary>
     [SerializeField] private int defaultStatVal;
 
+    /// <summary>
+    /// What the current stat value is set to.
+    /// </summary>
     [SerializeField] protected int currStatVal;
+
+    #endregion
 
     #region Getters_Setters
 
@@ -32,7 +47,17 @@ public abstract class Int_Stat : Stat
     /// <param name="_val">Value to add to the stat.</param>
     public void AddCurrStat(int _val)
     {
-        SetCurrStat(currStatVal + _val);
+        if(_val < 0)
+        {
+            SubtractCurrStat(Mathf.Abs(_val));
+            return;
+        }
+        if(currStatVal > maxStatVal)
+        {
+            Debug.LogError("Trying to add to currstat when already above max value: " + this.gameObject);
+            return;
+        }
+        currStatVal = Mathf.Min(maxStatVal, currStatVal + _val);
         CurrStatChanged();
     }
 
@@ -42,7 +67,18 @@ public abstract class Int_Stat : Stat
     /// <param name="_val">Value to subtract from the stat.</param>
     public void SubtractCurrStat(int _val)
     {
-        SetCurrStat(currStatVal - _val);
+        if(_val < 0)
+        {
+            AddCurrStat(Mathf.Abs(_val));
+            return;
+        }
+        if(currStatVal< minStatVal)
+        {
+            Debug.LogError("Trying to subtract to currstat when already below min value: " + this.gameObject);
+            return;
+        }
+
+        currStatVal = Mathf.Max(minStatVal, currStatVal - _val);
         CurrStatChanged();
     }
 
@@ -138,6 +174,36 @@ public abstract class Int_Stat : Stat
         maxStatVal = Mathf.Max(_val, minStatVal);
     }
 
+    #endregion
+
+    #region GOOD_OKAY_BAD
+    /// <summary>
+    /// If the currValue is above the okay value.
+    /// </summary>
+    /// <returns>Is currValue Good?</returns>
+    public bool GetIsGood()
+    {
+        return (currStatVal >= StatManager.GetInstance().GetGoodStatValue());
+
+    }
+
+    /// <summary>
+    /// If the currValue is below a the good threshold and above bad.
+    /// </summary>
+    /// <returns>Is currValue okay?</returns>
+    public bool GetIsOkay()
+    {
+        return (currStatVal < StatManager.GetInstance().GetGoodStatValue() && currStatVal > StatManager.GetInstance().GetBadStatValue());
+    }
+
+    /// <summary>
+    /// If the currValue is below okay value.
+    /// </summary>
+    /// <returns>Is currValue bad?</returns>
+    public bool GetIsBad()
+    {
+        return (currStatVal <= StatManager.GetInstance().GetBadStatValue());
+    }
     #endregion
 
     #endregion

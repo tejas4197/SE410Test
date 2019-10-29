@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Water Pump Building. has a radius of effect and a radius that it effects to a lesser degree.
+/// Building for giving out food to refugees.
 /// </summary>
-public class Water : Building
+public class FoodBuilding : Building
 {
+    [Min(0)]
     [SerializeField] private int prefRadius;
+    [Min(0)]
     [SerializeField] private int maxRadius;
 
 
@@ -16,6 +18,7 @@ public class Water : Building
     /// </summary>
     protected override void customStart()
     {
+        Debug.Log("Custom Start!");
     }
 
     /// <summary>
@@ -34,7 +37,7 @@ public class Water : Building
             distance = Vector3.Distance(housingManager.GetHouseAtIndex(i).cachedTransform.position, cachedTransform.position);
             if (distance < maxRadius)
             {
-                housingManager.GetHouseAtIndex(i).AddWaterSource(health);
+                housingManager.GetHouseAtIndex(i).AddFoodSource(health);
             }
         }
     }
@@ -47,12 +50,11 @@ public class Water : Building
         StartCoroutine(BuildingConstructionBegin());
     }
 
+    /// <summary>
+    /// Upgrades the food Building.
+    /// </summary>
     public override void Upgrade()
     {
-        //TODO update this when stat formats change
-        prefRadius = Mathf.RoundToInt(prefRadius * upgradeMultiplier);
-        maxRadius = Mathf.RoundToInt(maxRadius * upgradeMultiplier);
-        health.RestoreHealth();
-        upgradeLevel++;
+        throw new System.NotImplementedException();
     }
 }
