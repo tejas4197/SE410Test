@@ -38,6 +38,10 @@ public class BuildingMenuManager : Singleton<BuildingMenuManager>
     [SerializeField, Tooltip("UI Panel where water building options are")]
     GameObject waterOptionsContainer;
 
+    /// <summary> UI Panel where food building options are </summary>
+    [SerializeField, Tooltip("UI Panel where food building options are")]
+    GameObject foodOptionsContainer;
+
     /// <summary> building prefab for building selected to be built </summary>
     GameObject selectedBuilding;
 
@@ -87,6 +91,7 @@ public class BuildingMenuManager : Singleton<BuildingMenuManager>
     public void ShelterCategoryButtonPressed()
     {
         waterOptionsContainer.SetActive(false);
+        foodOptionsContainer.SetActive(false);
         shelterOptionsContainer.SetActive(true);
     }
 
@@ -98,7 +103,20 @@ public class BuildingMenuManager : Singleton<BuildingMenuManager>
     {
         //toggle water building options on
         shelterOptionsContainer.SetActive(false);
+        foodOptionsContainer.SetActive(false);
         waterOptionsContainer.SetActive(true);
+    }
+    
+    /// <summary>
+    /// Called by OnClick of Food Button; 
+    /// Toggles food building options on (needs refactor)
+    /// </summary>
+    public void FoodCategoryButtonPressed()
+    {
+        //toggle food building options on
+        shelterOptionsContainer.SetActive(false);
+        waterOptionsContainer.SetActive(false);
+        foodOptionsContainer.SetActive(true);
     }
 
     /// <summary>
