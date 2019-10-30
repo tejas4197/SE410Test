@@ -33,20 +33,12 @@ public class TriggerTimePassed : EventTrigger
 	/// </summary>
 	private IEnumerator Timer()
 	{
-		float timeElapsed = 0f;
+		yield return new WaitForTicks(waitTime);
 
-		while (timeElapsed < waitTime)
+		if (gameObject.activeInHierarchy && enabled)
 		{
-			yield return null;
-
-			// Only increment the timer if the game isn't paused
-			if (!PauseManager.GetInstance().GetIsPaused())
-			{
-				timeElapsed += Time.deltaTime;
-			}
+			InvokeEvent();
 		}
-
-		InvokeEvent();
 	}
 	#endregion Private Methods
 }
