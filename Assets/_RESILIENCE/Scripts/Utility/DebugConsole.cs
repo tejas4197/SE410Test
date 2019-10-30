@@ -15,16 +15,19 @@ using System.IO;
 using System.Collections;
 using System.Runtime.Serialization.Formatters.Binary;
 
-public class DebugConsole : MonoBehaviour
+public class DebugConsole : Singleton<DebugConsole>
 {
     #region VARIABLES
 
-    [SerializeField, Tooltip("GUI Object used to display text")]
+    [Tooltip("Root of DebugConsole")]
+    private GameObject DebugConsoleRoot = null;
+
+    [SerializeField, Tooltip("GUI Canvas used to display text")]
     private GameObject DebugGui = null;
 
-    [MinValue(1)]
+    [MinValue(0)]
     [SerializeField, Tooltip("Maximum number of messages stored in-game")]
-    private  int maxMessages = 2000;                  
+    private int maxMessages = 2000;                  
 
     private ArrayList messages = new ArrayList();
 
@@ -65,35 +68,6 @@ public class DebugConsole : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Accessor for instance, allows the instance of this script to be called without a direct connection
-    /// </summary>
-    public static DebugConsole GetInstance()
-    {
-        if (instance == null)
-        {
-            instance = FindObjectOfType(typeof(DebugConsole)) as DebugConsole;
-            if (instance == null)
-            {
-                // Load prefab which contains everything needed minus the script
-                GameObject prefab = Resources.Load("Prefabs/UtilityPrefabs/DebugConsoleChild") as GameObject;
-                prefab = Instantiate(prefab);
-                GameObject console = new GameObject();
-                // Add Script to console object
-                console.AddComponent<DebugConsole>();
-                // Set prefav as child of console
-                prefab.transform.parent = console.transform;
-                console.name = "DebugConsoleController";
-                // Because it starts disabled otherwise?
-                console.GetComponent<DebugConsole>().enabled = true;
-                // Update instance
-                instance = FindObjectOfType(typeof(DebugConsole)) as DebugConsole;
-                inputText = GameObject.FindGameObjectWithTag("DebugConsoleInput").GetComponent<InputField>();
-            }
-        }
-        return instance;
-    }
-
     #endregion GETTERS_SETTERS
 
     #region EVENTS
@@ -111,7 +85,7 @@ public class DebugConsole : MonoBehaviour
 
     #region MONOBEHAVIOR
 
-    void Awake()
+    protected override void CustomAwake()
     {
         instance = this;
     }
@@ -134,6 +108,11 @@ public class DebugConsole : MonoBehaviour
         GetInstance().SubmitCommand -= ProcessCommand;
     }
 
+    private void OnDestroy()
+    {
+        Application.logMessageReceived -= HandleLog;
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.BackQuote))
@@ -152,6 +131,11 @@ public class DebugConsole : MonoBehaviour
             inputText.text = "";
         }
 
+    }
+
+    void OnApplicationQuit()
+    {
+        Destroy(DebugConsoleRoot);
     }
 
     #endregion MONOBEHAVIOR
@@ -182,6 +166,10 @@ public class DebugConsole : MonoBehaviour
     /// </summary>
     public static void DisplayConsole()
     {
+        if(instance == null)
+        {
+            CreateInstance();
+        }
         GetInstance().Display();
     }
 
@@ -197,6 +185,28 @@ public class DebugConsole : MonoBehaviour
     #endregion PUBLIC_METHODS
 
     #region PRIVATE_METHODS
+    
+    /// <summary>
+    /// Creates the instance with all the parts it needs to work right
+    /// </summary>
+    static void CreateInstance()
+    {
+        // Load prefab which contains everything needed minus the script
+        GameObject prefab = Resources.Load("Prefabs/UtilityPrefabs/DebugConsoleChild") as GameObject;
+        prefab = Instantiate(prefab);
+        GameObject console = new GameObject();
+        // Add Script to console object
+        console.AddComponent<DebugConsole>();
+        // Set prefav as child of console
+        prefab.transform.parent = console.transform;
+        console.name = "DebugConsoleController";
+        // Because it starts disabled otherwise?
+        console.GetComponent<DebugConsole>().enabled = true;
+        // Update instance
+        instance = FindObjectOfType(typeof(DebugConsole)) as DebugConsole;
+        inputText = GameObject.FindGameObjectWithTag("DebugConsoleInput").GetComponent<InputField>();
+    }
+
 
     /// <summary>
     /// Handles adding log to the message array
