@@ -442,7 +442,7 @@ GameObject:
   - component: {fileID: 4935357100579680301}
   - component: {fileID: 5508647488293274076}
   m_Layer: 8
-  m_Name: Small
+  m_Name: Water_Small
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -461,6 +461,7 @@ Transform:
   m_Children:
   - {fileID: 6482478726054843801}
   - {fileID: 3509040790814185418}
+  - {fileID: 3549839252296269953}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -492,6 +493,9 @@ MonoBehaviour:
   interactPopup: {fileID: 8435983398119660283}
   constructionTime: 5
   price: 300
+  upgradePrice: 0
+  upgradeLevel: 0
+  upgradeMultiplier: 1.5
   cachedTransform: {fileID: 0}
   prefRadius: 20
   maxRadius: 30
@@ -636,6 +640,7 @@ MonoBehaviour:
   occupancyText: {fileID: 0}
   prefOccupancyText: {fileID: 0}
   maxOccupancyText: {fileID: 0}
+  upgradeButton: {fileID: 0}
 --- !u!114 &4410261748991304653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -753,3 +758,88 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!1001 &7681419881178946710
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7497801051846182599}
+    m_Modifications:
+    - target: {fileID: 4739722373296087584, guid: 4d854529499bb5847be4d6748038d8b2,
+        type: 3}
+      propertyPath: m_Name
+      value: BuildingHealthDegradation
+      objectReference: {fileID: 0}
+    - target: {fileID: 4739722373296087584, guid: 4d854529499bb5847be4d6748038d8b2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6618722805197364247, guid: 4d854529499bb5847be4d6748038d8b2,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6618722805197364247, guid: 4d854529499bb5847be4d6748038d8b2,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6618722805197364247, guid: 4d854529499bb5847be4d6748038d8b2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6618722805197364247, guid: 4d854529499bb5847be4d6748038d8b2,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6618722805197364247, guid: 4d854529499bb5847be4d6748038d8b2,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6618722805197364247, guid: 4d854529499bb5847be4d6748038d8b2,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6618722805197364247, guid: 4d854529499bb5847be4d6748038d8b2,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6618722805197364247, guid: 4d854529499bb5847be4d6748038d8b2,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6618722805197364247, guid: 4d854529499bb5847be4d6748038d8b2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6618722805197364247, guid: 4d854529499bb5847be4d6748038d8b2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6618722805197364247, guid: 4d854529499bb5847be4d6748038d8b2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7184978796539563421, guid: 4d854529499bb5847be4d6748038d8b2,
+        type: 3}
+      propertyPath: health
+      value: 
+      objectReference: {fileID: 5402954886124782721}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4d854529499bb5847be4d6748038d8b2, type: 3}
+--- !u!4 &3549839252296269953 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6618722805197364247, guid: 4d854529499bb5847be4d6748038d8b2,
+    type: 3}
+  m_PrefabInstance: {fileID: 7681419881178946710}
+  m_PrefabAsset: {fileID: 0}

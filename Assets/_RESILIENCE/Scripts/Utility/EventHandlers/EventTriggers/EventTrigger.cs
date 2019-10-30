@@ -147,6 +147,8 @@ public abstract class EventTrigger : MonoBehaviour
 			{
 				action.ResetAction();
 			}
+
+			CustomOnEnable();
 		}
 		else
 		{
