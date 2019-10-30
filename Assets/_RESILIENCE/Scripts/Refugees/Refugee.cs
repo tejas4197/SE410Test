@@ -6,7 +6,7 @@ using UnityEngine.AI;
 /// <summary>
 /// Refugee class, handles all basic refugee assignment and stat modification.
 /// </summary>
-[RequireComponent(typeof(Health))]
+[RequireComponent(typeof(Shelter))]
 [RequireComponent(typeof(Hydration))]
 [RequireComponent(typeof(Food))]
 [RequireComponent(typeof(Hygiene))]
@@ -25,9 +25,9 @@ public class Refugee : MonoBehaviour
     private House house;
 
     /// <summary>
-    /// Reference to the refugee's health stat.
+    /// Reference to the refugee's shelter stat.
     /// </summary>
-    private Health health;
+    private Shelter shelter;
     /// <summary>
     /// Reference to the refugee's hydration stat.
     /// </summary>
@@ -67,15 +67,15 @@ public class Refugee : MonoBehaviour
     [Tooltip("Number of Ticks to wait between updating stat values.")]
     [SerializeField] private float updateStatTimer = 2f;
     /// <summary>
-    /// Amount to decrease health by, if decrease is required. 
+    /// Amount to decrease shelter by, if decrease is required. 
     ///</summary>
-    [Tooltip("Amount to decrease health by, if decrease is required.")]
-    [SerializeField] private int healthDecrease = 1;
+    [Tooltip("Amount to decrease shelter by, if decrease is required.")]
+    [SerializeField] private int shelterDecrease = 1;
     /// <summary>
-    /// Amount to increase health by, if decrease is required. 
+    /// Amount to increase shelter by, if decrease is required. 
     ///</summary>
-    [Tooltip("Amount to increase health by, if decrease is required.")]
-    [SerializeField] private int healthIncrease = 1;
+    [Tooltip("Amount to increase shelter by, if decrease is required.")]
+    [SerializeField] private int shelterIncrease = 1;
     /// <summary>
     /// Amount to decrease hydration by, if decrease is required. 
     ///</summary>
@@ -114,11 +114,11 @@ public class Refugee : MonoBehaviour
 
     #region GettersSetters
     /// <summary>
-    /// Accessor for health value
+    /// Accessor for shelter value
     /// </summary>
-    public Health GetHealth()
+    public Shelter GetHealth()
     {
-        return health;
+        return shelter;
     }
 
     /// <summary>
@@ -160,12 +160,12 @@ public class Refugee : MonoBehaviour
     #region MONOBEHAVIOUR
 
     /// <summary>
-    /// Sets up initial references to transform, health, hydration, food, hygiene and well being. As well as subscribes to events.
+    /// Sets up initial references to transform, shelter, hydration, food, hygiene and well being. As well as subscribes to events.
     /// </summary>
     private void Start()
     {
         cachedTransform = transform;
-        health = GetComponent<Health>();
+        shelter = GetComponent<Shelter>();
         hydration = GetComponent<Hydration>();
         food = GetComponent<Food>();
         hygiene = GetComponent<Hygiene>();
@@ -173,7 +173,6 @@ public class Refugee : MonoBehaviour
 
         myMat = GetComponent<Renderer>().material;
 
-        health.Died += OnDiedEventHandler;
         TimeManager.GetInstance().OnTick += TickHandler;
     }
     #endregion
@@ -234,24 +233,24 @@ public class Refugee : MonoBehaviour
     }
 
     /// <summary>
-    /// Updates the refugee health stat
+    /// Updates the refugee shelter stat
     /// </summary>
     private void UpdateHealth()
     {
         if(house == null || house.GetType() == typeof(HomelessHouse))
         {
-            health.SubtractCurrStat(healthDecrease);
+            shelter.SubtractCurrStat(shelterDecrease);
         }
         else
         {
-            health.SetMaxStat(house.GetHealth().GetCurrStatVal());
-            if (health.GetMaxStatVal() < health.GetCurrStatVal())
+            shelter.SetMaxStat(house.GetHealth().GetCurrStatVal());
+            if (shelter.GetMaxStatVal() < shelter.GetCurrStatVal())
             {
-                health.SubtractCurrStat(healthDecrease);
+                shelter.SubtractCurrStat(shelterDecrease);
             }
             else
             {
-                health.AddCurrStat(healthIncrease);
+                shelter.AddCurrStat(shelterIncrease);
             }
         }
     }
@@ -261,7 +260,7 @@ public class Refugee : MonoBehaviour
     /// </summary>
     private void UpdateHydration()
     {
-        if (house == null) //We don't want to subtract health from registered homeless currently.
+        if (house == null) //We don't want to subtract shelter from registered homeless currently.
         {
             hydration.SubtractCurrStat(hydrationDecrease);
         }
@@ -323,9 +322,13 @@ public class Refugee : MonoBehaviour
     /// </summary>
     private void UpdateWellBeing()
     {
-        wellbeing.SetCurrStat(health.GetCurrStatVal(), hydration.GetCurrStatVal());
-
+        wellbeing.SetCurrStat(shelter.GetCurrStatVal(), hydration.GetCurrStatVal());
         myMat.SetColor("_BaseColor", Color.Lerp(unhealthyColor, healthyColor, wellbeing.GetCurrStatVal()*1f / wellbeing.GetMaxStatVal()));
+
+        if(wellbeing.GetCurrStatVal() == wellbeing.GetMinStatVal())
+        {
+            OnDiedEventHandler(this); //Calling this for now because I know Tejas wrote code that utilizes this event handler.
+        }
     }
 
     /// <summary>
