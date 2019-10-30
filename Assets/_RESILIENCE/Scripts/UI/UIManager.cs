@@ -18,7 +18,7 @@ public class UIManager : Singleton<UIManager>
 	private void Start()
 	{
 		MeasureModeManager.GetInstance().OnMeasureModeChange += SetMeasureMode;
-		SetMeasureMode(MeasureModeManager.GetInstance().GetMeasureMode());
+        SetMeasureMode(MeasureModeManager.GetInstance().GetMeasureMode());
 	}
 
 	private void OnDisable()
