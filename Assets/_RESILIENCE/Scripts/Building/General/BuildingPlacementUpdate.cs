@@ -57,10 +57,6 @@ public class BuildingPlacementUpdate : MonoBehaviour
             {
                 BuildBuilding(); //TODO: add check to make sure you're not over UI
             }
-			else
-			{
-
-			}
         }
         if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
         {

@@ -92,7 +92,10 @@ public abstract class Int_Stat : Stat
         CurrStatChanged();
     }
 
-    protected abstract void CurrStatChanged();
+    protected virtual void CurrStatChanged()
+    {
+
+    }
 
     #endregion
 
