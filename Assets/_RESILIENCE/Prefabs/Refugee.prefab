@@ -1360,7 +1360,7 @@ GameObject:
   - component: {fileID: 7508310923920201943}
   - component: {fileID: 7508310923920201936}
   - component: {fileID: 8724113510370968026}
-  - component: {fileID: 5760662965543901194}
+  - component: {fileID: 4011772695785130890}
   - component: {fileID: 3817373126521582964}
   - component: {fileID: 8660427190531856064}
   - component: {fileID: 7376554038248799455}
@@ -1414,9 +1414,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebd5465e1529106419fa82c345512428, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cachedTransform: {fileID: 0}
   healthyColor: {r: 0.585, g: 0.906, b: 0.646, a: 1}
   unhealthyColor: {r: 1, g: 0, b: 0.03513527, a: 1}
-  cachedTransform: {fileID: 0}
+  updateStatTimer: 2
+  healthDecrease: 1
+  healthIncrease: 1
+  hydrationDecrease: 1
+  hydrationIncrease: 1
+  foodDecrease: 1
+  foodIncrease: 1
+  hygieneDecrease: 1
+  hygieneIncrease: 1
 --- !u!195 &8724113510370968026
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1439,7 +1448,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 2
---- !u!114 &5760662965543901194
+--- !u!114 &4011772695785130890
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1448,7 +1457,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7508310923920201937}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f828c0bd66b3324880de8b217672157, type: 3}
+  m_Script: {fileID: 11500000, guid: d25d9ec4b8238494f8043315cdcd897b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   minStatVal: 0
