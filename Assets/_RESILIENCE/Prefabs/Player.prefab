@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2671338148192685274}
+  - component: {fileID: 2371628585176205780}
   - component: {fileID: 2733179697927478525}
   - component: {fileID: 1657132136071331999}
   - component: {fileID: 3787093586642967135}
@@ -20,7 +21,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2671338148192685274
 Transform:
   m_ObjectHideFlags: 0
@@ -35,6 +36,23 @@ Transform:
   m_Father: {fileID: 3118790355872052780}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2371628585176205780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 978249520121437725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79b968e85ae801f43a3f645561d28b05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasFired: 0
+  repeatable: 1
+  nextTrigger: {fileID: 0}
+  actions: []
+  skyViewSetting: 0
 --- !u!114 &2733179697927478525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -511,6 +529,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3706259732732435520}
+  - component: {fileID: 1117756987984904679}
   - component: {fileID: 7813706896012283675}
   - component: {fileID: 4823129151889399224}
   - component: {fileID: 1179673162296085320}
@@ -537,6 +556,23 @@ Transform:
   m_Father: {fileID: 3118790355872052780}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1117756987984904679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8641447454137847227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79b968e85ae801f43a3f645561d28b05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasFired: 0
+  repeatable: 1
+  nextTrigger: {fileID: 0}
+  actions: []
+  skyViewSetting: 1
 --- !u!114 &7813706896012283675
 MonoBehaviour:
   m_ObjectHideFlags: 0
