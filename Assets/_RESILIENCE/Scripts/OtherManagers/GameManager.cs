@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class GameManager : Singleton<GameManager>
 {
@@ -20,5 +22,21 @@ public class GameManager : Singleton<GameManager>
         housingCurrent += newHousing;
         UIManager.GetInstance().SetHousingCurrentText(housingCurrent);
     }
+
+    void Update()
+    {
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            Application.Quit();
+            #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false; 
+            #endif
+        }
+        if (Input.GetKey(KeyCode.Backspace))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+    }
+
 }
 
