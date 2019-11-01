@@ -1,33 +1,32 @@
-# SrProjMockup
+# Resilience
 
-A place to start creating mechanical prototypes. 
+A game about intergalactic refugee camps 
 
-## Current Features
+## Installation
+To install the game, choose from one of the following links
+Stable Builds (doesn't have the most recent content, but doesn't have as many bugs)
+Windows: https://builds.jros15.com/resilience/master/windows/Resilience_Windows.zip
+Mac: https://builds.jros15.com/resilience/master/mac/Resilience_Mac.zip
+Linux: https://builds.jros15.com/resilience/master/linux/Resilience_Linux.zip
 
-### Refugees 
- - Spawn into camp
- - Health deteriorates over time
- - Material on refugees updates to indicate health
- - Are processed through admin tent queue ~~before being assigned a house~~ (currently broken)
- - ~~Move to assigned house~~ (currently broken)
- - ~~Upon being assigned a house, health level stablizes to health value stored in house~~ (currently broken)
- 
-### ~~Housing Manager~~ (houses being broken makes this not work)
- - ~~Assigns refugees to houses when they enter the camp
- - Houses have comfortable occupancy level and crowded level
- - Automatically fills housing to comfortable occupancy level before crowding housing~~
- 
-### Building Lots/Houses
- - Clicking a house button in the temp housing menu starts housing placement coroutine
- - Houses are blue when can be placed, red when invalid placement location
- - Click to place house
- 
-### UI System
- - Shows basic info on # of housing available and # refugees available
- 
+Development Builds (most recent features being developed, but may have more bugs or weirdness!)
+Windows: https://builds.jros15.com/resilience/dev/windows/Resilience_Windows-Dev.zip
+Mac: https://builds.jros15.com/resilience/dev/mac/Resilience_Mac-Dev.zip
+Linux: https://builds.jros15.com/resilience/dev/linux/Resilience_Linux-Dev.zip
+
+Once you have clicked one of the links and your download is complete, you may need to extract the files from the zip.
+Once unzipped, the executable/application file can be clicked to launch the game.
 
 ## Controls
  - WASD to move around
  - M to switch between sky and ground mode
- - Click button to begin placing house
- - Click again to confirm house placement
+ - Click the button to begin placing the indicated building
+ - Click again to confirm building placement
+
+## How To Play
+ - Care for your refugees by placing buildings
+ - Refugees need housing to survive
+ - Refugees need food and water facilities placed close to their houses
+ - Refugees without housing, food and water will turn red, indicating that their health is depleted
+ - Refugees whose health drops too low will die
+ 
