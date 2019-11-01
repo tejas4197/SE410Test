@@ -1,0 +1,19 @@
+WIP#1 - Inital Build Implementation Features
+
+- Time Manager Integration
+- Skyview in Tablet
+- Stat Refactor
+- Food-Hygiene-Hydration-shelter stats
+- Overall Wellbeing
+- Building Houses, Pumps, Food, Shelters
+- Constant Income
+- Time Manager
+- Admin Center processing
+- Refugee arrivals
+- Basic background and house models
+- Greybox models for Pump and Food
+- Unity Asset model for Refugees
+- Refugees
+- DebugConsole implementation
+- Imported external assets
+- First Person Movement Polish
