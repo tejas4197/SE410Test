@@ -16,6 +16,8 @@ public class House : Building
 
     private List<Health> waterHealth = new List<Health>();
 
+    private List<Health> foodHealth = new List<Health>();
+
     #endregion VARIABLES
 
     #region GETTERS_SETTERS
@@ -37,16 +39,27 @@ public class House : Building
 
     public int GetWaterHealth()
     {
-        if (waterHealth.Count == 0)
-        {
-            return 0;
-        }
         int highestCurrentHealth = 0;
-        foreach (Health h in waterHealth)
+
+        for (int i = 0; i < waterHealth.Count; ++i)
         {
-            if (h.GetCurrStatVal() > highestCurrentHealth)
+            if (waterHealth[i].GetCurrStatVal() > highestCurrentHealth)
             {
-                highestCurrentHealth = h.GetCurrStatVal();
+                highestCurrentHealth = waterHealth[i].GetCurrStatVal();
+            }
+        }
+        return highestCurrentHealth;
+    }
+
+    public int GetFoodHealth()
+    {
+        int highestCurrentHealth = 0;
+
+        for (int i = 0; i < foodHealth.Count; ++i)
+        {
+            if (foodHealth[i].GetCurrStatVal() > highestCurrentHealth)
+            {
+                highestCurrentHealth = foodHealth[i].GetCurrStatVal();
             }
         }
         return highestCurrentHealth;
@@ -75,11 +88,19 @@ public class House : Building
     /// <returns></returns>
     protected override IEnumerator BuildingConstructionBegin()
     {
-        yield return new WaitForSeconds(constructionTime);
+        yield return new WaitForTicks(constructionTime);
 
         HousingManager.GetInstance().NewHouseBuilt(this);
     }
 
+    public override void Upgrade()
+    {
+        prefOccupancy = Mathf.RoundToInt(prefOccupancy * upgradeMultiplier);
+        maxOccupancy = Mathf.RoundToInt(maxOccupancy * upgradeMultiplier);
+        health.RestoreHealth();
+        // increase max health and/or reduce deterioration rate
+        upgradeLevel++;
+    }
 
     #region PUBLIC_METHODS
 
@@ -152,9 +173,22 @@ public class House : Building
         }
     }
 
+    /// <summary>
+    /// Adds a water source to a house. Houses look for the best water supply for it's occupants.
+    /// </summary>
+    /// <param name="_waterHealth">Health stat of water building</param>
     public void AddWaterSource(Health _waterHealth)
     {
         waterHealth.Add(_waterHealth);
+    }
+
+    /// <summary>
+    /// Adds a food source to a house. Houses look for the best food supply for it's occupants.
+    /// </summary>
+    /// <param name="_food">Health stat of food building</param>
+    public void AddFoodSource(Health _food)
+    {
+        foodHealth.Add(_food);
     }
 
     #endregion PUBLIC_METHODS

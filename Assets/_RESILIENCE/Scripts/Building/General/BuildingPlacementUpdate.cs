@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
+
+using Sirenix.OdinInspector;
 
 // TODO: Import BuildingIndicatorUpdate script into this script
 
@@ -11,14 +15,8 @@ using UnityEngine;
 /// </summary>
 public class BuildingPlacementUpdate : MonoBehaviour
 {
-    #region VARIABLES
-
-    // TODO: camera reference should probably be made static and put in Player script singleton, when that script is refactored
-    /// <summary> Instance of Camera attached to player </summary>
-    [SerializeField, Tooltip("Instance of Camera attached to player")]
-    Camera playerCamera;
-
-    /// <summary> Instance of BuildingMenuManager singleton, which fires the event for when the user wants to place a building </summary>
+	#region VARIABLES
+	/// <summary> Instance of BuildingMenuManager singleton, which fires the event for when the user wants to place a building </summary>
     BuildingMenuManager buildMenuInstance;
 
     /// <summary> Coroutine for placing a building, to ensure there is only ever one running </summary>
@@ -55,7 +53,7 @@ public class BuildingPlacementUpdate : MonoBehaviour
     {
         if (Input.GetMouseButtonUp(0))
         {
-            if (placementCoroutine != null)
+            if (placementCoroutine != null && EventSystem.current.currentSelectedGameObject == null)
             {
                 BuildBuilding(); //TODO: add check to make sure you're not over UI
             }
@@ -106,14 +104,14 @@ public class BuildingPlacementUpdate : MonoBehaviour
     {
         while (true)
         {
-            Vector3 playerPosition = Input.mousePosition;
-            Ray ray = playerCamera.ScreenPointToRay(playerPosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, groundPlaneLayerMask))
-            {
-                position = RoundToWholeUnit(hit.point);
-            }
-            buildingPlacementIndicatorInstance.transform.position = position;
+			RaycastHit groundHit = SkyViewTablet.GetInstance().GetTabletMouseHit(groundPlaneLayerMask);
+
+			if (groundHit.collider != null)
+			{
+				position = RoundToWholeUnit(groundHit.point);
+			}
+
+			buildingPlacementIndicatorInstance.transform.position = position;
             yield return null;
         }
     }

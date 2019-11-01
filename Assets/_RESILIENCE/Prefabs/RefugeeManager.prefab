@@ -78,15 +78,17 @@ MonoBehaviour:
   refugeePrefab: {fileID: 7508310923920201937, guid: f5f1b1f96c341fd4ab90964e1c15aba3,
     type: 3}
   arrivals:
-  - numRefugees: 10
-    timeToNextArrival: 20
+  - numRefugees: 5
+    timeToNextArrival: 25
+  - numRefugees: 5
+    timeToNextArrival: 30
   - numRefugees: 10
     timeToNextArrival: 30
-  - numRefugees: 15
-    timeToNextArrival: 14
-  - numRefugees: 30
-    timeToNextArrival: 60
+  - numRefugees: 10
+    timeToNextArrival: 30
+  - numRefugees: 10
+    timeToNextArrival: 30
   - numRefugees: 20
-    timeToNextArrival: 90
-  - numRefugees: 40
-    timeToNextArrival: 150
+    timeToNextArrival: 30
+  - numRefugees: 20
+    timeToNextArrival: 30

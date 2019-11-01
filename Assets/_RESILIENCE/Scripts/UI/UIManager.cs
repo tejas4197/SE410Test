@@ -15,9 +15,10 @@ public class UIManager : Singleton<UIManager>
     public GameObject SkyViewCanvas;
     public GameObject RefugeePanel;
 
-	private void OnEnable()
+	private void Start()
 	{
 		MeasureModeManager.GetInstance().OnMeasureModeChange += SetMeasureMode;
+        SetMeasureMode(MeasureModeManager.GetInstance().GetMeasureMode());
 	}
 
 	private void OnDisable()

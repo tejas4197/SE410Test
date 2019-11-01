@@ -24,8 +24,18 @@ public class ReceptionCenter : Building
 
     protected override IEnumerator BuildingConstructionBegin()
     {
-        yield return new WaitForSeconds(constructionTime);
+        yield return new WaitForTicks(constructionTime);
+
         StartCoroutine(ProcessAllRefugees());
+    }
+
+    /// <summary>
+    /// Upgrades reception center speed
+    /// </summary>
+    public override void Upgrade()
+    {
+        timeToProcess = timeToProcess / 2;
+        upgradeLevel++;
     }
 
     public void AddRefugee(Refugee newRefugee)
@@ -40,13 +50,13 @@ public class ReceptionCenter : Building
         {
             if (queue.Count == 0)
             {
-                yield return new WaitForSeconds(1);
+                yield return new WaitForTicks(1);
             }
             else
             {
                 Refugee current = queue.Dequeue();
                 current.SetNewDestination(lineStartPos);
-                yield return new WaitForSeconds(timeToProcess);
+                yield return new WaitForTicks(timeToProcess);
                 current.SetNewDestination(finishedProcessingPos);
                 HousingManager.GetInstance().GetBestHouse().AddOccupant(current);
             }

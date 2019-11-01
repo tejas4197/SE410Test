@@ -5,7 +5,6 @@ using UnityEngine;
 /// <summary>
 /// Water Pump Building. has a radius of effect and a radius that it effects to a lesser degree.
 /// </summary>
-[RequireComponent(typeof(Health))]
 public class Water : Building
 {
     [SerializeField] private int prefRadius;
@@ -25,7 +24,7 @@ public class Water : Building
     /// <returns></returns>
     protected override IEnumerator BuildingConstructionBegin()
     {
-        yield return new WaitForSeconds(constructionTime);
+        yield return new WaitForTicks(constructionTime);
 
         HousingManager housingManager = HousingManager.GetInstance();
         float distance;
@@ -46,5 +45,14 @@ public class Water : Building
     public override void BuildingPlaced()
     {
         StartCoroutine(BuildingConstructionBegin());
+    }
+
+    public override void Upgrade()
+    {
+        //TODO update this when stat formats change
+        prefRadius = Mathf.RoundToInt(prefRadius * upgradeMultiplier);
+        maxRadius = Mathf.RoundToInt(maxRadius * upgradeMultiplier);
+        health.RestoreHealth();
+        upgradeLevel++;
     }
 }
